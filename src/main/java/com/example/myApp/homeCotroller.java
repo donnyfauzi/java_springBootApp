@@ -8,7 +8,12 @@ public class homeCotroller {
 
      @GetMapping("/")
      public String home() {
-         return "home"; // Mengembalikan nama template (home.html)
+         return "home"; 
+     }
+
+     @GetMapping("/login")
+     public String login() {
+         return "login";
      }
 
 }
