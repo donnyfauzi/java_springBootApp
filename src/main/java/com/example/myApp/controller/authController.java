@@ -1,7 +1,7 @@
 package com.example.myApp.controller;
 
-import com.example.myApp.model.user;
-import com.example.myApp.service.userService;
+import com.example.myApp.model.User;
+import com.example.myApp.service.UserService;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class authController {
+public class AuthController {
     @Autowired
-    private userService userService;
+    private UserService userService;
 
     @GetMapping("/login")
     public String login() {
@@ -23,7 +23,7 @@ public class authController {
 
     @PostMapping("/proses-login")
     public String processLogin(@RequestParam String email, @RequestParam String password, Model model) {
-        Optional<user> user = userService.findByEmail(email);
+        Optional<User> user = userService.findByEmail(email);
 
         System.out.println("Email: " + email);
         System.out.println("Password Input: " + password);
