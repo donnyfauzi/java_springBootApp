@@ -2,6 +2,9 @@ package com.example.myApp.controller;
 
 import com.example.myApp.model.User;
 import com.example.myApp.service.UserService;
+
+import jakarta.servlet.http.HttpSession;
+
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,12 +25,18 @@ public class AuthController {
     private BCryptPasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
-    public String login() {
+    public String login(HttpSession session) {
+        // Check if user is already logged in
+        if (session.getAttribute("user") != null) {
+            // If user is already logged in, redirect to the dashboard
+            return "redirect:/dashboard";
+        }
+        // If user is not logged in, show the login page
         return "login";
     }
 
     @PostMapping("/proses-login")
-    public String processLogin(@RequestParam String email, @RequestParam String password, Model model) {
+    public String processLogin(@RequestParam String email, @RequestParam String password, Model model, HttpSession session) {
         Optional<User> user = userService.findByEmail(email);
 
         System.out.println("Email: " + email);
@@ -39,6 +48,8 @@ public class AuthController {
             System.out.println("User Found: " + user.get().getEmail() + ", Password: " + user.get().getPassword());
 
             if (passwordMatch) {
+                // Jika login berhasil, simpan informasi pengguna di dalam session
+                session.setAttribute("user", user.get());
                 // Jika login berhasil, arahkan ke halaman beranda atau dashboard
                 return "redirect:/dashboard";
             }
