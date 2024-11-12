@@ -124,3 +124,19 @@ display: block !important;
   padding: .75rem 1rem;
 }
 
+.sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antara ikon dan teks */
+}
+
+.sidebar .nav-link i {
+  width: 15px; /* Pastikan semua ikon memiliki lebar yang sama */
+  text-align: center; /* Pusatkan ikon jika perlu */
+}
+
+.sidebar .nav-link span {
+  flex: 1;
+}
+
+
