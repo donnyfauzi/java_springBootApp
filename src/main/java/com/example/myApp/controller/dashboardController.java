@@ -12,4 +12,9 @@ public class DashboardController {
         // Anda bisa menambahkan data model di sini jika perlu
         return "dashboard"; // Mengembalikan nama view untuk dashboard
     }
+
+    @GetMapping("/dashboard/data-pribadi")
+    public String dataPribadi(Model model) {
+        return "data-pribadi"; // Mengembalikan view untuk Data Pribadi
+    }
 }

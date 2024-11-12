@@ -139,4 +139,10 @@ display: block !important;
   flex: 1;
 }
 
+.nav-link.active {
+    background-color: #0c5ece;
+    color: white !important;
+}
+
+
 
