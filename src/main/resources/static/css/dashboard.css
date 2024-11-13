@@ -144,5 +144,9 @@ display: block !important;
     color: white !important;
 }
 
+.navbar {
+  background-color: blue;
+}
+
 
 

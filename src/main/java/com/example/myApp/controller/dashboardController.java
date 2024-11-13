@@ -17,4 +17,9 @@ public class DashboardController {
     public String dataPribadi(Model model) {
         return "data-pribadi"; // Mengembalikan view untuk Data Pribadi
     }
+
+    @GetMapping("/dashboard/pendidikan")
+    public String pendidikan(Model model) {
+        return "pendidikan"; // Mengembalikan view untuk Data Pribadi
+    }
 }
