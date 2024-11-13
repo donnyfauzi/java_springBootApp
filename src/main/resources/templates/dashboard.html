@@ -45,7 +45,7 @@
                                         <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/dashboard"><i class="fa-solid fa-house-chimney"></i>Dashboard</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link d-flex align-items-center gap-2" href="" onclick="loadContent('/dashboard/data-pribadi', event)"><i class="fa-solid fa-user"></i>Data Pribadi</a>
+                                        <a class="nav-link d-flex align-items-center gap-2" href="#" onclick="loadContent('/dashboard/data-pribadi', event)"><i class="fa-solid fa-user"></i>Data Pribadi</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link d-flex align-items-center gap-2" href="#"><i class="fa-solid fa-graduation-cap"></i>Pendidikan</a>
@@ -108,6 +108,7 @@
             </div>
             <script>
                 function loadContent(url, event) {
+                    // Mencegah default behavior dari link
                     if (event) event.preventDefault();
 
                     // Hapus kelas 'active' dari semua link
@@ -121,20 +122,26 @@
 
                     // Muat konten ke dalam elemen utama
                     fetch(url)
-                        .then(response => {
-                            if (!response.ok) throw new Error('Network response was not ok');
-                            return response.text();
-                        })
-                        .then(data => {
-                            document.getElementById("main-content").innerHTML = data;
-                        })
-                        .catch(error => console.error('Error loading content:', error));
+                    .then(response => {
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        return response.text();
+                    })
+                    .then(data => {
+                        document.getElementById("main-content").innerHTML = data;
+                    })
+                    .catch(error => console.error('Error loading content:', error));
                 }
-                window.addEventListener("popstate", function () {
-                    // Muat konten sesuai URL yang ada di address bar saat ini
-                    loadContent(window.location.pathname);
-                });
+
+                // Jika halaman dimuat ulang, pastikan URL diperiksa untuk memuat konten sesuai
+                    document.addEventListener("DOMContentLoaded", function() {
+                        const currentPath = window.location.pathname;
+                        if (currentPath !== '/dashboard') {  // Jika bukan halaman utama
+                            loadContent(currentPath, null);  // Memuat konten sesuai URL saat refresh
+                        }
+                    });
             </script>
+
+
         <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/js/dashboard.js"></script>
     </body>
