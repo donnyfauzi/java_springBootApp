@@ -8,18 +8,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DashboardController {
 
     @GetMapping("/dashboard")
-    public String dashboard(Model model) {
-        // Anda bisa menambahkan data model di sini jika perlu
-        return "dashboard"; // Mengembalikan nama view untuk dashboard
+    public String showDashboard(Model model) {
+        model.addAttribute("menu", "dashboard");
+        model.addAttribute("pageTitle", "Dashboard");
+        model.addAttribute("content", "dashboard.html"); // Mengarahkan konten dashboard
+        return "layout-dashboard"; // Menggunakan layout utama dashboard
     }
 
-    @GetMapping("/dashboard/data-pribadi")
-    public String dataPribadi(Model model) {
-        return "data-pribadi"; // Mengembalikan view untuk Data Pribadi
+    @GetMapping("/data-pribadi")
+    public String showPengguna(Model model) {
+        model.addAttribute("menu", "data-pribadi");
+        model.addAttribute("pageTitle", "data-pribadi");
+        model.addAttribute("content", "data-pribadi.html"); // Mengarahkan konten pengguna
+        return "layout-dashboard"; // Menggunakan layout utama dashboard
     }
 
-    @GetMapping("/dashboard/pendidikan")
-    public String pendidikan(Model model) {
-        return "pendidikan"; // Mengembalikan view untuk Data Pribadi
+    @GetMapping("/pendidikan")
+    public String showProduk(Model model) {
+        model.addAttribute("menu", "pendidikan");
+        model.addAttribute("pageTitle", "pendidikan");
+        model.addAttribute("content", "pendidikan.html"); // Mengarahkan konten produk
+        return "layout-dashboard"; // Menggunakan layout utama dashboard
     }
 }
