@@ -1,3 +1,7 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
 .bd-placeholder-img {
 font-size: 1.125rem;
 text-anchor: middle;
@@ -109,6 +113,15 @@ display: block !important;
   font-size: .75rem;
 }
 
+@media (max-width: 768px) {
+  .d-flex .ms-2 {
+    display: none;
+  }
+
+  .ms-1 {
+    display: none;
+  }
+}
 /*
  * Navbar
  */
@@ -146,6 +159,66 @@ display: block !important;
 
 .navbar {
   background-color: #21618c;
+}
+
+/* -----Dashboard-----*/
+/* menyamakan titik 2 */
+.card {
+  position: relative;
+  border: none;
+  max-width: 100%;
+  margin: auto;
+  padding-left: 30px;
+}
+.card::before {
+    content: "";
+    position: absolute;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    top: 0;
+    left: 0;
+    width: 35px; /* Ketebalan garis */
+    height: 100%;
+    background-color: #21618c; /* Warna biru */
+}
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+.label {
+  width: 150px; /* Set width for labels */
+}
+.separator {
+  margin: 0 10px; /* Spacing for the colon */
+}
+.value {
+  flex: 1; /* Allow value to expand */
+}
+/* Responsive styling */
+@media (max-width: 768px) {
+  .card {
+      max-width: 100%;
+  }
+  .card-title {
+      font-size: 1.25rem;
+  }
+  .label {
+      width: 100px; /* Reduce label width on smaller screens */
+      font-size: 0.7rem;
+  }
+  .separator, .value {
+      font-size: 0.7rem;
+  }
+  .card-body {
+      padding: 8px;
+  }
+  img {
+      max-height: 150px; /* Reduce image height on smaller screens */
+  }
+  .card::before {
+    width: 15px;
+  }
+
 }
 
 

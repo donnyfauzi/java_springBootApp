@@ -9,12 +9,14 @@
         <title>Dashbord</title>    
         <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link href="/css/dashboard.css" rel="stylesheet">
     </head>
     <body>
         <header class="navbar sticky-top flex-md-nowrap p-0 shadow" data-bs-theme="light">
             <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">
                 <img src="/img/logo2.png" alt="Logo" class="me-2" style="width: 30px; height: 30px;">PT Donini Indomaju</a>
+                <span class="ms-1 text-white"> Selamat datang di dashboard anda</span>
             <div class="d-flex align-items-center me-3">
                 <img src="/img/testimonials/testimonials-1.jpg" alt="Profile" class="img-fluid rounded-circle" style="width: 40px; height: 40px;">
                 <span class="ms-2 text-white">Nama</span>
@@ -97,9 +99,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9 col-lg-10">
+                <div class="col-md-9 col-lg-10" style="background-color: whitesmoke;">
                     <div class="container mt-4">
-                        <h2 th:text="${pageTitle}"></h2>
                         <!-- th:replace untuk mengganti konten dinamis -->
                         <div th:replace="${content}::content"></div>
                     </div>
