@@ -169,6 +169,7 @@ display: block !important;
   max-width: 100%;
   margin: auto;
   padding-left: 30px;
+  background-color: #ffffff;
 }
 .card::before {
     content: "";
@@ -221,5 +222,14 @@ display: block !important;
 
 }
 
-
+/* List Data */
+ul.list-group li {
+  background-color: #ffffff;
+}
+@media (max-width: 768px) {
+  ul.list-group li {
+    max-width: 100%;
+    font-size: 0.6rem;
+  }
+}
 

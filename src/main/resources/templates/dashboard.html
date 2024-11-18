@@ -1,5 +1,5 @@
 <div th:fragment="content">
-    <div class="card mb-3 mx-auto" style="max-width: 900px;color: #566573 ;">
+    <div class="card mb-3 mx-auto" style="max-width: 900px;color: #566573;">
         <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center justify-content-center" style="padding: 15px;">
                 <img src="/img/testimonials/testimonials-2.jpg" class="img-fluid rounded-circle" alt="Foto Profil" style="max-height: 200px; object-fit: cover;">
@@ -21,14 +21,60 @@
             </div>
         </div>
     </div>
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col order-first border text-center">Data Pribadi</div>
-            <div class="col border text-center">Pendidikan</div>
-            <div class="col border text-center">Pengalaman Kerja</div>
-            <div class="col border text-center">Pengalaman Organisasi</div>
-            <div class="col border text-center">Prestasi</div>
-            <div class="col order-last border text-center">Document</div>
-        </div>
-    </div>
+    <ul class="list-group mb-3 mx-auto" style="max-width: 900px; color: #566573;">
+        <li class="list-group-item list-group-item-light d-flex justify-content-between align-items-center">
+            <span>Data Pribadi</span>
+            <div class="d-flex align-items-center" style="width: 50%;">
+                <div class="progress" style="width: 80%; height: 10px; margin-right: 10px;">
+                    <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="text-muted" style="min-width: 40px; text-align: right;">80%</span>
+            </div>
+        </li>
+        <li class="list-group-item list-group-item-light d-flex justify-content-between align-items-center">
+            <span>Pendidikan</span>
+            <div class="d-flex align-items-center" style="width: 50%;">
+                <div class="progress" style="width: 80%; height: 10px; margin-right: 10px;">
+                    <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="text-muted" style="min-width: 40px; text-align: right;">60%</span>
+            </div>
+        </li>
+        <li class="list-group-item list-group-item-light d-flex justify-content-between align-items-center">
+            <span>Pengalaman Kerja</span>
+            <div class="d-flex align-items-center" style="width: 50%;">
+                <div class="progress" style="width: 80%; height: 10px; margin-right: 10px;">
+                    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="text-muted" style="min-width: 40px; text-align: right;">50%</span>
+            </div>
+        </li>
+        <li class="list-group-item list-group-item-light d-flex justify-content-between align-items-center">
+            <span>Pengalaman Organisasi</span>
+            <div class="d-flex align-items-center" style="width: 50%;">
+                <div class="progress" style="width: 80%; height: 10px; margin-right: 10px;">
+                    <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="text-muted" style="min-width: 40px; text-align: right;">30%</span>
+            </div>
+        </li>
+        <li class="list-group-item list-group-item-light d-flex justify-content-between align-items-center">
+            <span>Prestasi</span>
+            <div class="d-flex align-items-center" style="width: 50%;">
+                <div class="progress" style="width: 80%; height: 10px; margin-right: 10px;">
+                    <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="text-muted" style="min-width: 40px; text-align: right;">70%</span>
+            </div>
+        </li>
+        <li class="list-group-item list-group-item-light d-flex justify-content-between align-items-center">
+            <span>Dokumen</span>
+            <div class="d-flex align-items-center" style="width: 50%;">
+                <div class="progress" style="width: 80%; height: 10px; margin-right: 10px;">
+                    <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="text-muted" style="min-width: 40px; text-align: right;">90%</span>
+            </div>
+        </li>
+    </ul>
 </div>
