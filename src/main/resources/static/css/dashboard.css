@@ -1,5 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: whitesmoke;
 }
 
 .bd-placeholder-img {
@@ -127,6 +128,7 @@ display: block !important;
  */
 
 .navbar-brand {
+  width: 250px;
   padding-top: .75rem;
   padding-bottom: .75rem;
   background-color: rgba(0, 0, 0, .25);
@@ -153,12 +155,114 @@ display: block !important;
 }
 
 .nav-link.active {
-    background-color: #21618c;
-    color: white !important;
+  background-color: #21618c;
+  color: white !important;
 }
 
 .navbar {
   background-color: #21618c;
+}
+
+/* Container untuk menempatkan sidebar dan content area secara berdampingan */
+.container-fluid {
+  display: flex;
+  height: 100vh;  /* Full height untuk seluruh layar */
+  overflow: hidden;  /* Menghindari overflow pada container */
+}
+
+/* Styling untuk Sidebar */
+.sidebar {
+  background-color: #f8f9fa;
+  height: 100vh;  /* Sidebar mengisi seluruh tinggi layar */
+  flex-shrink: 0;  /* Sidebar tidak mengecil */
+  width: 250px;  /* Tentukan lebar sidebar */
+  overflow: hidden;  /* Menyembunyikan overflow pada sidebar */
+  position: fixed; /* Sidebar tetap di posisi kiri */
+  z-index: 1000;  /* Agar sidebar berada di depan */
+}
+
+/* Content Area yang bisa menggulir */
+.content-area {
+  background-color: whitesmoke;
+  padding: 20px;
+  margin-left: 210px;  
+  overflow-y: auto;    /* Membuat content area bisa menggulir vertikal */
+  height: calc(100vh - 56px); /* Agar content area tidak melebihi tinggi layar */
+  flex-grow: 1; /* Konten mengisi sisa ruang */
+  box-sizing: border-box;
+}
+
+/* Agar body pada offcanvas sidebar menggulir jika diperlukan */
+.offcanvas-body {
+  overflow-y: auto;
+  max-height: 100vh;  /* Membatasi tinggi sidebar agar tidak melebihi layar */
+}
+
+/* Responsif untuk Layar Lebih Kecil (Mobile) */
+@media (max-width: 768px) {
+    /* Sidebar pada mobile menjadi offcanvas (tidak terlihat secara default) */
+    .sidebar {
+      position: fixed;  /* Tetap di kiri layar */
+      width: 100%;      /* Sidebar mengisi lebar layar */
+      height: 100%;     /* Sidebar mengisi tinggi layar */
+      top: 0;
+      left: -250px;     /* Menyembunyikan sidebar di luar layar secara default */
+      transition: left 0.3s ease;  /* Animasi saat sidebar masuk dan keluar */
+    }
+
+    /* Ketika sidebar dibuka */
+    .sidebar.open {
+      left: 0;  /* Sidebar muncul dari kiri */
+    }
+
+    /* Content-area pada mobile menyesuaikan */
+    .content-area {
+      margin-left: 0;  /* Tidak ada margin kiri, karena sidebar menjadi full screen */
+      padding: 10px;   /* Mengurangi padding untuk ruang lebih */
+    }
+
+    /* Navbar mobile */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    /* Mengubah ukuran font dan elemen untuk tampilan mobile */
+  .navbar-brand {
+    font-size: 14px;
+  }
+
+  .sidebar .offcanvas-body {
+    padding-top: 56px; /* Memberikan ruang untuk header */
+  }
+
+  .sidebar .offcanvas-body ul.nav {
+    padding-left: 0;
+    list-style-type: none;
+  }
+}
+
+/* Responsif untuk Layar Lebih Besar (Tablet dan Desktop) */
+@media (min-width: 1350px) {
+  .sidebar {
+    position: fixed;  /* Sidebar tetap di kiri layar */
+    width: 250px;     /* Lebar sidebar tetap */
+  }
+
+    /* Content-area pada desktop tidak terpengaruh oleh sidebar */
+  .content-area {
+    margin-left: 270px; /* Memberikan ruang untuk sidebar */
+    padding: 10px;
+    width: 1200px;      /* Memberikan padding yang lebih besar */
+  }
+
+    /* Navbar tetap seperti semula pada desktop */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
 }
 
 /* -----Dashboard-----*/
@@ -172,15 +276,15 @@ display: block !important;
   background-color: #ffffff;
 }
 .card::before {
-    content: "";
-    position: absolute;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    top: 0;
-    left: 0;
-    width: 35px; /* Ketebalan garis */
-    height: 100%;
-    background-color: #21618c; /* Warna biru */
+  content: "";
+  position: absolute;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  top: 0;
+  left: 0;
+  width: 35px; /* Ketebalan garis */
+  height: 100%;
+  background-color: #21618c; /* Warna biru */
 }
 .d-flex {
   display: flex;
@@ -198,20 +302,20 @@ display: block !important;
 /* Responsive styling */
 @media (max-width: 768px) {
   .card {
-      max-width: 100%;
+    max-width: 100%;
   }
   .card-title {
-      font-size: 1.25rem;
+    font-size: 1.25rem;
   }
   .label {
-      width: 100px; /* Reduce label width on smaller screens */
-      font-size: 0.7rem;
+    width: 100px; /* Reduce label width on smaller screens */
+    font-size: 0.7rem;
   }
   .separator, .value {
-      font-size: 0.7rem;
+    font-size: 0.7rem;
   }
   .card-body {
-      padding: 8px;
+    padding: 8px;
   }
   img {
       max-height: 150px; /* Reduce image height on smaller screens */
@@ -228,8 +332,61 @@ ul.list-group li {
 }
 @media (max-width: 768px) {
   ul.list-group li {
-    max-width: 100%;
-    font-size: 0.6rem;
+  max-width: 100%;
+  font-size: 0.6rem;
   }
 }
+
+/* Atur agar body dan html menggunakan seluruh tinggi layar */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Buat konten utama fleksibel untuk memenuhi ruang yang ada */
+.content {
+  min-height: calc(100vh - 60px); /* Mengurangi tinggi footer */
+  padding-bottom: 60px; /* Memberikan ruang untuk footer */
+}
+
+/* Posisi footer fixed di bawah */
+/* Default Footer styling */
+.footer {
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  position: fixed; /* Footer yang normal di layar besar */
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* For mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .footer {
+    position: fixed;  /* Menempel di bawah layar */
+    bottom: 0;
+    left: 0;
+    width: 100%;  /* Lebar penuh */
+    padding: 7px 0;  /* Padding lebih kecil */
+    font-size: 10px;  /* Ukuran font lebih kecil */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);  /* Optional, memberi bayangan pada footer */
+    z-index: 10;  /* Pastikan footer di atas konten */
+  }
+}
+
+/* For larger screens (min-width: 1350px) */
+@media (min-width: 1350px) {
+  .footer {
+    position: fixed;  /* Kembali ke posisi normal di layar besar */
+    padding: 20px 0;  /* Padding lebih besar */
+    font-size: 16px;  /* Ukuran font lebih besar */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);  /* Optional, memberi bayangan pada footer */
+  }
+}
+
+
+
 

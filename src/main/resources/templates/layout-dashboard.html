@@ -14,7 +14,7 @@
     </head>
     <body>
         <header class="navbar sticky-top flex-md-nowrap p-0 shadow" data-bs-theme="light">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">
+            <a class="navbar-brand custom-navbar-brand me-0 px-3 fs-6 text-white" href="#">
                 <img src="/img/logo2.png" alt="Logo" class="me-2" style="width: 30px; height: 30px;">PT Donini Indomaju</a>
                 <span class="ms-1 text-white"> Selamat datang di dashboard anda</span>
             <div class="d-flex align-items-center me-3">
@@ -34,7 +34,7 @@
         </header>
         <div class="container-fluid">
             <div class="row">
-                <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+                <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary" style="width: 250px;">
                     <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
@@ -99,9 +99,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9 col-lg-10 content-area" style="background-color: whitesmoke;">
+                <div class="content-area">
                     <div class="container mt-4">
-                        <!-- th:replace untuk mengganti konten dinamis -->
                         <div th:replace="${content}::content"></div>
                     </div>
                 </div>
