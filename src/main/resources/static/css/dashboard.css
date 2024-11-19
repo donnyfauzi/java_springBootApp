@@ -349,6 +349,96 @@ html, body {
   padding-bottom: 60px; /* Memberikan ruang untuk footer */
 }
 
+
+    /* Wrapper utama dengan background */
+    .job-recommendation {
+        background-color: #f8f9fa; /* Warna background */
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+    }
+
+    /* Judul */
+    .job-title {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    /* Kolom pencarian */
+    #searchInput {
+        margin-bottom: 15px;
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    /* Styling daftar */
+    .job-list-group {
+        padding: 0;
+        list-style: none;
+    }
+
+    .job-list-item {
+        background-color: #ffffff; /* Background untuk setiap item */
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .job-list-item .fw-bold {
+        font-size: 14px; /* Ukuran font untuk teks bold (pekerjaan) */
+    }
+
+    /* Styling tombol */
+    .job-list-item button {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    /* Responsif */
+    @media (max-width: 576px) {
+        .job-title {
+            font-size: 16px;
+        }
+
+        #searchInput {
+            font-size: 12px;
+            padding: 6px;
+        }
+
+        .job-list-item {
+            padding: 5px;
+            font-size: 8px;
+        }
+
+        .job-list-item .fw-bold {
+            font-size: 8px; /* Teks UI/UX tetap terlihat */
+        }
+
+        .job-list-item button {
+            font-size: 10px; /* Ukuran tombol lebih kecil */
+            padding: 4px 8px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .job-title {
+            font-size: 20px;
+        }
+
+        .job-list-item {
+            font-size: 16px;
+        }
+
+        .job-list-item button {
+            font-size: 14px;
+        }
+    }
+
+
+
 /* Posisi footer fixed di bawah */
 /* Default Footer styling */
 .footer {
@@ -386,6 +476,8 @@ html, body {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);  /* Optional, memberi bayangan pada footer */
   }
 }
+
+
 
 
 
