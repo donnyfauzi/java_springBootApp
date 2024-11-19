@@ -183,7 +183,7 @@ display: block !important;
 
 /* Content Area yang bisa menggulir */
 .content-area {
-  background-color: whitesmoke;
+  background-color: #ffffff;
   padding: 20px;
   margin-left: 210px;  
   overflow-y: auto;    /* Membuat content area bisa menggulir vertikal */
@@ -266,14 +266,14 @@ display: block !important;
 }
 
 /* -----Dashboard-----*/
-/* menyamakan titik 2 */
 .card {
   position: relative;
   border: none;
   max-width: 100%;
   margin: auto;
   padding-left: 30px;
-  background-color: #ffffff;
+  background: linear-gradient(to bottom, #f7f9fb, #eaf1f8);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .card::before {
   content: "";
@@ -328,7 +328,8 @@ display: block !important;
 
 /* List Data */
 ul.list-group li {
-  background-color: #ffffff;
+  background: linear-gradient(to bottom, #f7f9fb, #eaf1f8);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 @media (max-width: 768px) {
   ul.list-group li {
@@ -350,92 +351,126 @@ html, body {
 }
 
 
-    /* Wrapper utama dengan background */
-    .job-recommendation {
-        background-color: #f8f9fa; /* Warna background */
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 15px;
+/* Container utama */
+.job-recommendation {
+    background: linear-gradient(to bottom, #f7f9fb, #eaf1f8); /* Gradasi warna */
+    border-radius: 10px; /* Sudut melengkung */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan */
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto; /* Tengah pada halaman */
+    color: #566573; /* Warna teks */
+}
+
+/* Baris header */
+.job-recommendation-header {
+    display: flex; /* Flexbox untuk tata letak horizontal */
+    justify-content: space-between; /* Elemen di kiri dan kanan */
+    align-items: center; /* Rata tengah secara vertikal */
+    margin-bottom: 20px; /* Jarak bawah */
+}
+
+/* Job Title */
+.job-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #34495e;
+    margin: 0; /* Hilangkan margin default */
+}
+
+/* Kolom pencarian */
+#searchInput {
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 12px;
+    max-width: 250px; /* Lebar maksimum */
+}
+
+/* Daftar pekerjaan */
+.job-list-group {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Item pekerjaan */
+.job-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+/* Informasi pekerjaan */
+.job-info .fw-bold {
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+/* Tombol aksi */
+.job-actions button {
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Tombol utama */
+.job-actions .btn-primary {
+    background: #007bff;
+    color: #ffffff;
+}
+
+.job-actions .btn-primary:hover {
+    background: #0056b3;
+}
+
+/* Tombol sekunder */
+.job-actions .btn-outline-primary {
+    background: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+    margin-right: 8px;
+}
+
+.job-actions .btn-outline-primary:hover {
+    background: #007bff;
+    color: #ffffff;
+}
+
+/* Responsif: Layar kecil */
+@media (max-width: 576px) {
+    .job-recommendation-header {
+        flex-direction: column; /* Kolom untuk layar kecil */
+        align-items: flex-start; /* Rata kiri */
     }
 
-    /* Judul */
-    .job-title {
-        margin-bottom: 10px;
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    /* Kolom pencarian */
     #searchInput {
-        margin-bottom: 15px;
-        padding: 8px;
-        font-size: 14px;
-    }
-
-    /* Styling daftar */
-    .job-list-group {
-        padding: 0;
-        list-style: none;
+        width: 100%; /* Kolom pencarian penuh */
+        margin-top: 10px; /* Jarak atas */
     }
 
     .job-list-item {
-        background-color: #ffffff; /* Background untuk setiap item */
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        padding: 10px;
-        font-size: 14px;
+        flex-direction: column; /* Kolom untuk item pekerjaan */
+        align-items: flex-start; /* Rata kiri */
     }
 
-    .job-list-item .fw-bold {
-        font-size: 14px; /* Ukuran font untuk teks bold (pekerjaan) */
+    .job-actions {
+        margin-top: 10px; /* Jarak atas tombol */
+        align-self: flex-start;
     }
+}
 
-    /* Styling tombol */
-    .job-list-item button {
-        font-size: 12px;
-        padding: 5px 10px;
-    }
 
-    /* Responsif */
-    @media (max-width: 576px) {
-        .job-title {
-            font-size: 16px;
-        }
 
-        #searchInput {
-            font-size: 12px;
-            padding: 6px;
-        }
-
-        .job-list-item {
-            padding: 5px;
-            font-size: 8px;
-        }
-
-        .job-list-item .fw-bold {
-            font-size: 8px; /* Teks UI/UX tetap terlihat */
-        }
-
-        .job-list-item button {
-            font-size: 10px; /* Ukuran tombol lebih kecil */
-            padding: 4px 8px;
-        }
-    }
-
-    @media (min-width: 768px) {
-        .job-title {
-            font-size: 20px;
-        }
-
-        .job-list-item {
-            font-size: 16px;
-        }
-
-        .job-list-item button {
-            font-size: 14px;
-        }
-    }
 
 
 
