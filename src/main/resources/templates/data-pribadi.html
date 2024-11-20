@@ -1,5 +1,163 @@
-<!-- Konten Data Pribadi -->
 <div th:fragment="content">
-    <h2 style="margin-left: 200px;">Selamat datang di data pribadi</h2>
-    <!-- Konten pengguna akan ditampilkan di sini -->
+    <div class="form-container">
+        <h2>Form Data Diri</h2>
+        <form action="/submit" method="POST" enctype="multipart/form-data">
+            <div class="form-flex">
+                <!-- Kolom Kiri -->
+                <div class="form-left">
+                    <!-- Foto Profil -->
+                    <div class="form-group photo-group">
+                        <div class="upload-btn-wrapper">
+                            <img id="profilePreview" src="default-profile.png" alt="Foto Profil" class="profile-pic">
+                            <label for="photo" class="upload-label">Upload Foto Profil</label>
+                            <input type="file" id="photo" name="photo" accept="image/*" onchange="previewImage(event)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan -->
+                <div class="form-right">
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="donnyfauzi55@gmail.com" readonly>
+                    </div>
+                    <!-- Nomor Telepon -->
+                    <div class="form-group">
+                        <label for="phone">Nomor Telepon</label>
+                        <input type="text" id="phone" name="phone" value="+6282290090036">
+                    </div>
+                    <!-- Jenis Kelamin -->
+                    <div class="form-group">
+                        <label for="gender">Jenis Kelamin</label>
+                        <select id="gender" name="gender">
+                            <option value="Laki-Laki" selected>Laki-Laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <!-- Tanggal Lahir -->
+                    <div class="form-group">
+                        <label for="dob">Tanggal Lahir</label>
+                        <input type="date" id="dob" name="dob" value="1992-12-10">
+                    </div>
+                    <!-- Domisili -->
+                    <div class="form-group">
+                        <label for="domicile">Domisili</label>
+                        <input type="text" id="domicile" name="domicile" value="KOTA JAKARTA BARAT">
+                    </div>
+                    <!-- Lama Bekerja -->
+                    <div class="form-group">
+                        <label for="experience">Lama Bekerja</label>
+                        <input type="text" id="experience" name="experience" value="2 tahun, 5 bulan">
+                    </div>
+                    <!-- Harapan Gaji -->
+                    <div class="form-group">
+                        <label for="salary">Harapan Gaji</label>
+                        <input type="text" id="salary" name="salary" value="Rp.7.000.000">
+                    </div>
+                    <!-- Resume -->
+                    <div class="form-group">
+                        <label for="resume">Resume</label>
+                        <a href="c728bdf2-07f9-422d-84af-55ab43c22bc3.pdf" target="_blank">Download Resume</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <style>
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-flex {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-left, .form-right {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .photo-group {
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 2px solid #ddd;
+        }
+
+        .upload-label {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .upload-label:hover {
+            background-color: #45a049;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .submit-btn {
+            background-color: #21618c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background-color: #184c72;
+        }
+    </style>
 </div>
