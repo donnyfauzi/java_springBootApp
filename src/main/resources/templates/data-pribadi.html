@@ -1,22 +1,4 @@
-<div th:fragment="content">
-    <header class="dashboard-header">
-    <div class="header-content">
-        <h1>Formulir CV Online</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Posisi</a></li>
-                <li><a href="#">Data Pribadi</a></li>
-                <li><a href="#">Tempat Tinggal</a></li>
-                <li><a href="#">Data Pendidikan</a></li>
-                <li><a href="#">Latar Belakang Pekerjaan</a></li>
-                <li><a href="#">Sertifikasi</a></li>
-            </ul>
-        </nav>
-    </div>
-    <img src="/img/service-6.jpg" alt="Background Image" class="full-width-image">
-</header>
-
-
+<div th:fragment="content" class="data-ribadi">
     <div class="form-container">
         <h2>Form Data Diri</h2>
         <form action="/submit" method="POST" enctype="multipart/form-data">
@@ -105,7 +87,7 @@
     <style>
     .form-container {
     max-width: 900px;
-    margin-top: 90px;
+    margin: auto;
     padding: 20px;
     border-radius: 8px;
     background: linear-gradient(to bottom, #f7f9fb, #eaf1f8);
@@ -194,53 +176,9 @@
     color: #e74c3c; /* Merah untuk menonjolkan */
 }
 
-/* Styling ikon kalender jika Anda ingin menyesuaikan */
-.dashboard-header {
-    position: relative;
-    text-align: center;
-    color: white;
-}
 
-.full-width-image {
-    width: 100%;
-    height: 30vh; /* Menetapkan tinggi gambar 50% dari tinggi layar */
-    object-fit: cover; /* Menjaga proporsi gambar tetap terjaga */
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1; /* Menempatkan gambar di belakang konten */
-}
 
-.dashboard-header .header-content {
-    position: relative;
-    z-index: 1;
-    padding: 20px;
-}
 
-.dashboard-header .header-content h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-
-.dashboard-header nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.dashboard-header nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-.dashboard-header nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
-.dashboard-header nav ul li a:hover {
-    text-decoration: underline;
-}
 
 
 

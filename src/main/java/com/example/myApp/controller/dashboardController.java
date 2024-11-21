@@ -11,8 +11,8 @@ public class DashboardController {
     public String showDashboard(Model model) {
         model.addAttribute("menu", "dashboard");
         model.addAttribute("pageTitle", "Dashboard");
-        model.addAttribute("content", "dashboard.html"); // Mengarahkan konten dashboard
-        return "layout-dashboard"; // Menggunakan layout utama dashboard
+        model.addAttribute("content", ""); // Mengarahkan konten dashboard
+        return "users-profile"; // Menggunakan layout utama dashboard
     }
 
     @GetMapping("/data-pribadi")
