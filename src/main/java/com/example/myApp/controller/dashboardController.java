@@ -14,7 +14,7 @@ public class DashboardController {
 
     @GetMapping("/data-pribadi")
     public String showPengguna(Model model) {
-        return "forms-validation"; // Menggunakan layout utama dashboard
+        return "data-pribadi"; // Menggunakan layout utama dashboard
     }
 
    
