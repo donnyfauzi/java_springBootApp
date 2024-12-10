@@ -26,6 +26,8 @@
   <link href="layout/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="layout/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
   <!-- Template Main CSS File -->
   <link href="layout/assets/css/style.css" rel="stylesheet">
 
@@ -381,7 +383,7 @@
                   <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <input name="fullName" type="text" class="form-control" id="fullName">
-                    <small class="text-danger error-message">Kolom ini harus diisi!</small>
+                    <small class="text-danger error-message">Kolom ini harus diisi !</small>
                   </div>
                 </div>
 
@@ -389,17 +391,83 @@
                   <label for="about" class="col-md-4 col-lg-3 col-form-label">Tentang Anda<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <textarea name="about" class="form-control" id="about" style="height: 100px"></textarea>
-                    <small class="text-danger error-message">Kolom ini harus diisi.</small>
+                    <small class="text-danger error-message">Kolom ini harus diisi !</small>
                   </div>
                 </div>
 
                 <div class="row mb-3">
-                  <label for="address" class="col-md-4 col-lg-3 col-form-label">Alamat <span class="small text-danger">*</span></label>
+                  <label for="address" class="col-md-4 col-lg-3 col-form-label">Alamat<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <textarea name="address" class="form-control" id="about" style="height: 100px"></textarea>
-                    <small class="text-danger error-message">Kolom ini harus diisi.</small>
+                    <small class="text-danger error-message">Kolom ini harus diisi !</small>
                   </div>
                 </div>
+
+                <div class="row mb-3">
+                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Tempat Lahir<span class="small text-danger">*</span></label>
+                  <div class="col-md-8 col-lg-9">
+                    <input name="fullName" type="text" class="form-control" id="fullName">
+                    <small class="text-danger error-message">Kolom ini harus diisi !</small>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir<span class="small text-danger">*</span></label>
+                  <div class="col-md-8 col-lg-9">
+                    <input type="text" id="dateInput" class="form-control" placeholder="DD-MM-YYYY">
+                    <small class="text-danger error-message">Kolom ini harus diisi !</small>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">No Telepon<span class="small text-danger">*</span></label>
+                  <div class="col-md-8 col-lg-9">
+                    <div class="input-group">
+                      <span class="input-group-text">+62</span>
+                      <input type="text" name="phone" class="form-control" id="phoneInput">
+                    </div>
+                    <small class="text-danger error-message">Kolom ini harus diisi !</small>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Alamat Email<span class="small text-danger">*</span></label>
+                  <div class="col-md-8 col-lg-9">
+                    <input name="fullName" type="email" class="form-control" id="fullName">
+                    <small class="text-danger error-message">Kolom ini harus diisi !</small>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="religion" class="col-md-4 col-lg-3 col-form-label">Agama<span class="small text-danger">*</span></label>
+                  <div class="col-md-8 col-lg-9">
+                    <select name="religion" id="religion" class="form-control">
+                      <option value="" selected disabled>Pilih Agama</option>
+                      <option value="Islam">Islam</option>
+                      <option value="Kristen Protestan">Kristen Protestan</option>
+                      <option value="Kristen Katolik">Kristen Katolik</option>
+                      <option value="Hindu">Hindu</option>
+                      <option value="Buddha">Buddha</option>
+                      <option value="Konghucu">Konghucu</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
+                    <small class="text-danger error-message">Kolom ini harus diisi !</small>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="maritalStatus" class="col-md-4 col-lg-3 col-form-label">Status Perkawinan<span class="small text-danger">*</span></label>
+                  <div class="col-md-8 col-lg-9">
+                    <select name="maritalStatus" id="maritalStatus" class="form-control">
+                      <option value="" selected disabled>Pilih Status Perkawinan</option>
+                      <option value="Belum Menikah">Belum Menikah</option>
+                      <option value="Menikah">Menikah</option>
+                      <option value="Cerai Hidup">Cerai</option>
+                    </select>
+                    <small class="text-danger error-message" style="display: none;">Kolom ini harus diisi !</small>
+                  </div>
+                </div>
+
 
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -479,87 +547,8 @@
     </section>
 
     <style>
-  .is-invalid {
-    border: 1px solid red;
-  }
-  .error-message {
-    color: red;
-    font-size: 0.875rem;
-    display: none;
-  }
+  
 </style>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const statusIndicator = document.getElementById("status-indicator"); // Elemen indikator status
-        const statusText = document.getElementById("status-text"); // Elemen teks status
-
-        fetch("/status")
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.isLoggedIn) {
-              statusIndicator.style.backgroundColor = "green";
-              statusText.textContent = data.statusText; // Tampilkan "Aktif"
-            } else {
-              statusIndicator.style.backgroundColor = "red";
-              statusText.textContent = data.statusText; // Tampilkan "Tidak Aktif"
-            }
-          })
-          .catch((error) => {
-            console.error("Error fetching status:", error);
-          });
-      });
-    </script>
-     <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('myForm');
-    const inputs = document.querySelectorAll('input, textarea');
-    const errorMessages = document.querySelectorAll('.error-message');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault(); // Mencegah form dikirim
-
-      let isValid = true; // Status validasi
-      inputs.forEach((input, index) => {
-        const errorMessage = input.nextElementSibling; // Menemukan elemen .error-message di bawah input
-
-        if (input.value.trim() === '') {
-          input.classList.add('is-invalid'); // Tambahkan kelas untuk border merah
-          if (errorMessage) {
-            errorMessage.style.display = 'block'; // Tampilkan pesan error
-          }
-          isValid = false;
-        } else {
-          input.classList.remove('is-invalid');
-          if (errorMessage) {
-            errorMessage.style.display = 'none';
-          }
-        }
-      });
-
-      // Jika form valid, Anda bisa melakukan tindakan seperti mengirimkan form
-      if (isValid) {
-        alert('Form berhasil dikirim!');
-        // form.submit(); // Uncomment untuk mengirim form
-      }
-    });
-
-    // Hilangkan border merah dan pesan error saat pengguna mengetik
-    inputs.forEach(input => {
-      input.addEventListener('input', () => {
-        if (input.value.trim() !== '') {
-          input.classList.remove('is-invalid');
-          const errorMessage = input.nextElementSibling; // Menemukan elemen .error-message di bawah input
-          if (errorMessage) {
-            errorMessage.style.display = 'none';
-          }
-        }
-      });
-    });
-  });
-</script>
-
-
 
   </main><!-- End #main -->
 
@@ -588,6 +577,8 @@
   <script src="layout/assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="layout/assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="layout/assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="layout/assets/js/main.js"></script>

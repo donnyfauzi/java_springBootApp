@@ -1238,3 +1238,25 @@ h6 {
   padding: 10px 0;
 }
 
+  .is-invalid {
+    border: 1px solid red;
+  }
+  .error-message {
+    color: red;
+    font-size: 0.875rem;
+    display: none;
+  }
+
+  
+  .ui-datepicker {
+    font-size: 14px; /* Ukuran font */
+    z-index: 10000; /* Pastikan di atas elemen lain */
+  }
+
+  .text-danger {
+  font-size: 0.65em; /* Mengatur ukuran font */
+}
+
+
+
+
