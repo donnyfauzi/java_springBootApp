@@ -5,8 +5,11 @@ import com.example.myApp.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,12 +39,13 @@ public class AuthController {
     }
 
     @PostMapping("/proses-login")
-    public String processLogin(@RequestParam String email, @RequestParam String password, Model model, HttpSession session) {
+    public String processLogin(@RequestParam String email, @RequestParam String password, Model model,
+            HttpSession session) {
         Optional<User> user = userService.findByEmail(email);
 
         System.out.println("Email: " + email);
         System.out.println("Password Input: " + password);
-        
+
         if (user.isPresent()) {
             // Menggunakan passwordEncoder.matches untuk memverifikasi password
             boolean passwordMatch = passwordEncoder.matches(password, user.get().getPassword());
@@ -54,10 +58,29 @@ public class AuthController {
                 return "redirect:/dashboard";
             }
         }
-        
+
         // Jika login gagal, kembali ke halaman login dengan pesan error
         model.addAttribute("error", "Invalid email or password");
         return "login";
+    }
+    
+    @GetMapping("/status")
+    public ResponseEntity<Map<String, Object>> getStatus(HttpSession session) {
+        User user = (User) session.getAttribute("user"); // Ambil user dari session
+        Map<String, Object> response = new HashMap<>();
+
+        if (user != null) {
+            // Jika pengguna sedang login
+            response.put("isLoggedIn", true);
+            response.put("statusText", "Aktif");
+            response.put("userName", user.getNama()); // Misalnya untuk menampilkan nama pengguna
+        } else {
+            // Jika pengguna tidak login
+            response.put("isLoggedIn", false);
+            response.put("statusText", "Tidak Aktif");
+        }
+
+        return ResponseEntity.ok(response);
     }
     
     

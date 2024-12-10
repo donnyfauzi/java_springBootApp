@@ -364,108 +364,47 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Silahkan isi data anda</h5>
-
               <!-- Browser Default Validation -->
-              <form>
-                    <div class="row mb-3">
-                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                      <div class="col-md-8 col-lg-9">
-                        <img src="/layout/assets/img/profile-img.jpg" alt="Profile">
-                        <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-                        </div>
-                      </div>
+              <form id="myForm">
+                <div class="row mb-3">
+                  <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Photo Profil</label>
+                  <div class="col-md-8 col-lg-9">
+                    <img src="/layout/assets/img/profile-img.jpg" alt="Profile">
+                    <div class="pt-2">
+                      <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                      <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
                     </div>
+                  </div>
+                </div>
 
-                    <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
-                      </div>
-                    </div>
+                <div class="row mb-3">
+                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap<span class="small text-danger">*</span></label>
+                  <div class="col-md-8 col-lg-9">
+                    <input name="fullName" type="text" class="form-control" id="fullName">
+                    <small class="text-danger error-message">Kolom ini harus diisi!</small>
+                  </div>
+                </div>
 
-                    <div class="row mb-3">
-                      <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
-                      <div class="col-md-8 col-lg-9">
-                        <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
-                      </div>
-                    </div>
+                <div class="row mb-3">
+                  <label for="about" class="col-md-4 col-lg-3 col-form-label">Tentang Anda<span class="small text-danger">*</span></label>
+                  <div class="col-md-8 col-lg-9">
+                    <textarea name="about" class="form-control" id="about" style="height: 100px"></textarea>
+                    <small class="text-danger error-message">Kolom ini harus diisi.</small>
+                  </div>
+                </div>
 
-                    <div class="row mb-3">
-                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
-                      </div>
-                    </div>
+                <div class="row mb-3">
+                  <label for="address" class="col-md-4 col-lg-3 col-form-label">Alamat <span class="small text-danger">*</span></label>
+                  <div class="col-md-8 col-lg-9">
+                    <textarea name="address" class="form-control" id="about" style="height: 100px"></textarea>
+                    <small class="text-danger error-message">Kolom ini harus diisi.</small>
+                  </div>
+                </div>
 
-                    <div class="row mb-3">
-                      <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="country" type="text" class="form-control" id="Country" value="USA">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
-                      </div>
-                    </div>
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </div>
-                  </form><!-- End Profile Edit Form -->
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+              </form><!-- End Profile Edit Form -->
 
             </div>
           </div>
@@ -476,74 +415,13 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Status Pencari Kerja</h5>
-              <!-- Custom Styled Validation -->
-              <form class="row g-3 needs-validation" novalidate>
-                <div class="col-md-4">
-                  <label for="validationCustom01" class="form-label">First name</label>
-                  <input type="text" class="form-control" id="validationCustom01" value="John" required>
-                  <div class="valid-feedback">
-                    Looks good!
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <label for="validationCustom02" class="form-label">Last name</label>
-                  <input type="text" class="form-control" id="validationCustom02" value="Doe" required>
-                  <div class="valid-feedback">
-                    Looks good!
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <label for="validationCustomUsername" class="form-label">Username</label>
-                  <div class="input-group has-validation">
-                    <span class="input-group-text" id="inputGroupPrepend">@</span>
-                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                    <div class="invalid-feedback">
-                      Please choose a username.
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label for="validationCustom03" class="form-label">City</label>
-                  <input type="text" class="form-control" id="validationCustom03" required>
-                  <div class="invalid-feedback">
-                    Please provide a valid city.
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <label for="validationCustom04" class="form-label">State</label>
-                  <select class="form-select" id="validationCustom04" required>
-                    <option selected disabled value="">Choose...</option>
-                    <option>...</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Please select a valid state.
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <label for="validationCustom05" class="form-label">Zip</label>
-                  <input type="text" class="form-control" id="validationCustom05" required>
-                  <div class="invalid-feedback">
-                    Please provide a valid zip.
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                    <label class="form-check-label" for="invalidCheck">
-                      Agree to terms and conditions
-                    </label>
-                    <div class="invalid-feedback">
-                      You must agree before submitting.
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <button class="btn btn-primary" type="submit">Submit form</button>
-                </div>
-              </form><!-- End Custom Styled Validation -->
-
+              <div style="display: flex; align-items: center;">
+                <div id="status-indicator" style="width: 10px; height: 10px; border-radius: 50%; background-color: grey; margin-right: 10px;"></div>
+                <span id="status-text" class="text-secondary">Tidak Aktif</span>
+              </div>
             </div>
           </div>
+
 
           <div class="card">
             <div class="card-body">
@@ -599,6 +477,89 @@
         </div>
       </div>
     </section>
+
+    <style>
+  .is-invalid {
+    border: 1px solid red;
+  }
+  .error-message {
+    color: red;
+    font-size: 0.875rem;
+    display: none;
+  }
+</style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const statusIndicator = document.getElementById("status-indicator"); // Elemen indikator status
+        const statusText = document.getElementById("status-text"); // Elemen teks status
+
+        fetch("/status")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.isLoggedIn) {
+              statusIndicator.style.backgroundColor = "green";
+              statusText.textContent = data.statusText; // Tampilkan "Aktif"
+            } else {
+              statusIndicator.style.backgroundColor = "red";
+              statusText.textContent = data.statusText; // Tampilkan "Tidak Aktif"
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching status:", error);
+          });
+      });
+    </script>
+     <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('myForm');
+    const inputs = document.querySelectorAll('input, textarea');
+    const errorMessages = document.querySelectorAll('.error-message');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Mencegah form dikirim
+
+      let isValid = true; // Status validasi
+      inputs.forEach((input, index) => {
+        const errorMessage = input.nextElementSibling; // Menemukan elemen .error-message di bawah input
+
+        if (input.value.trim() === '') {
+          input.classList.add('is-invalid'); // Tambahkan kelas untuk border merah
+          if (errorMessage) {
+            errorMessage.style.display = 'block'; // Tampilkan pesan error
+          }
+          isValid = false;
+        } else {
+          input.classList.remove('is-invalid');
+          if (errorMessage) {
+            errorMessage.style.display = 'none';
+          }
+        }
+      });
+
+      // Jika form valid, Anda bisa melakukan tindakan seperti mengirimkan form
+      if (isValid) {
+        alert('Form berhasil dikirim!');
+        // form.submit(); // Uncomment untuk mengirim form
+      }
+    });
+
+    // Hilangkan border merah dan pesan error saat pengguna mengetik
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        if (input.value.trim() !== '') {
+          input.classList.remove('is-invalid');
+          const errorMessage = input.nextElementSibling; // Menemukan elemen .error-message di bawah input
+          if (errorMessage) {
+            errorMessage.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+</script>
+
+
 
   </main><!-- End #main -->
 
