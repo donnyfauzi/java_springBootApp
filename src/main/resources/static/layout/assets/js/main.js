@@ -342,60 +342,68 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /**
-   * Pengaturan Form input
-   */
+ * Pengaturan Form input
+ */
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("myForm");
-  const inputs = document.querySelectorAll("input, textarea");
-  const errorMessages = document.querySelectorAll(".error-message");
+  const inputs = document.querySelectorAll("input, textarea, select");
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault(); // Mencegah form dikirim
+  // Fungsi untuk menampilkan atau menyembunyikan pesan error
+  function toggleError(input, isValid) {
+    const errorMessage = input.parentElement.querySelector(".error-message");
+    if (!isValid) {
+      input.classList.add("is-invalid");
+      if (errorMessage) errorMessage.style.display = "block";
+    } else {
+      input.classList.remove("is-invalid");
+      if (errorMessage) errorMessage.style.display = "none";
+    }
+  }
 
-    let isValid = true; // Status validasi
-    inputs.forEach((input, index) => {
-      const errorMessage = input.nextElementSibling; // Menemukan elemen .error-message di bawah input
-
-      if (input.value.trim() === "") {
-        input.classList.add("is-invalid"); // Tambahkan kelas untuk border merah
-        if (errorMessage) {
-          errorMessage.style.display = "block"; // Tampilkan pesan error
-        }
-        isValid = false;
-      } else {
-        input.classList.remove("is-invalid");
-        if (errorMessage) {
-          errorMessage.style.display = "none";
-        }
-      }
+  // Validasi real-time untuk semua input
+  inputs.forEach((input) => {
+    input.addEventListener("input", () => {
+      toggleError(input, input.value.trim() !== "");
     });
+  });
 
-    // Jika form valid, Anda bisa melakukan tindakan seperti mengirimkan form
-    if (isValid) {
-      alert("Form berhasil dikirim!");
-      // form.submit(); // Uncomment untuk mengirim form
+  // Validasi khusus untuk elemen select
+  inputs.forEach((input) => {
+    if (input.tagName === "SELECT") {
+      input.addEventListener("change", () => {
+        toggleError(input, input.value !== "");
+      });
     }
   });
 
-  // Hilangkan border merah dan pesan error saat pengguna mengetik
-  inputs.forEach((input) => {
-    input.addEventListener("input", () => {
-      if (input.value.trim() !== "") {
-        input.classList.remove("is-invalid");
-        const errorMessage = input.nextElementSibling; // Menemukan elemen .error-message di bawah input
-        if (errorMessage) {
-          errorMessage.style.display = "none";
-        }
+  // Validasi saat form disubmit
+  form.addEventListener("submit", (e) => {
+    let isValid = true;
+    let firstInvalidInput = null; // Menyimpan elemen pertama yang tidak valid
+
+    inputs.forEach((input) => {
+      const value = input.value.trim();
+      const isSelect = input.tagName === "SELECT";
+      const valid = isSelect ? value !== "" : value !== "";
+      toggleError(input, valid);
+
+      if (!valid) {
+        isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = input; // Catat elemen pertama yang tidak valid
       }
     });
+
+    if (!isValid) {
+      e.preventDefault(); // Mencegah pengiriman form jika ada error
+      if (firstInvalidInput) firstInvalidInput.focus(); // Fokus pada elemen pertama yang tidak valid
+    }
   });
 });
 
 /**
-   * Pengaturan Form input tangal lahir 
-   */
+ * Pengaturan Datepicker untuk input tanggal lahir
+ */
 $(document).ready(function () {
-  // Inisialisasi Datepicker
   $("#dateInput").datepicker({
     dateFormat: "dd-mm-yy",
     changeMonth: true,
@@ -406,91 +414,26 @@ $(document).ready(function () {
   const dateInput = $("#dateInput");
   const dateError = dateInput.next(".error-message");
 
-  // Event untuk validasi real-time
   dateInput.on("input change", function () {
+    const isValid = dateInput.val().trim() !== "";
+    dateInput.toggleClass("is-invalid", !isValid);
+    dateError.toggle(!isValid);
+  });
+
+  $("#myForm").on("submit", function (e) {
     if (dateInput.val().trim() === "") {
-      // Jika kosong, tampilkan error
       dateError.text("Kolom ini harus diisi!").show();
       dateInput.addClass("is-invalid");
-    } else {
-      // Jika ada nilai, sembunyikan error
-      dateError.hide();
-      dateInput.removeClass("is-invalid");
+      dateInput.focus(); // Fokus pada input tanggal jika tidak valid
+      e.preventDefault(); // Hentikan pengiriman form
     }
   });
-
-  // Validasi saat submit
-  $("#myForm").on("submit", function (e) {
-    e.preventDefault(); // Mencegah submit form
-
-    let isValid = true;
-
-    // Validasi kolom tanggal
-    if (dateInput.val().trim() === "") {
-      dateError.text("Kolom ini harus diisi !").show();
-      dateInput.addClass("is-invalid");
-      isValid = false;
-    }
-
-  });
-});
-
-/**
-   * Pengaturan Form input agama 
-   */
-const religionSelect = document.getElementById("religion");
-const religionError =
-  religionSelect.parentElement.querySelector(".error-message");
-
-// Fungsi untuk validasi kolom saat perubahan pilihan
-religionSelect.addEventListener("change", function () {
-  if (religionSelect.value === "") {
-    religionError.style.display = "block"; // Tampilkan pesan error
-    religionSelect.classList.add("is-invalid"); // Menambahkan kelas untuk border merah
-  } else {
-    religionError.style.display = "none"; // Sembunyikan pesan error
-    religionSelect.classList.remove("is-invalid"); // Menghapus kelas border merah
-  }
-});
-
-// Validasi pada form submit
-document.getElementById("myForm").addEventListener("submit", function (e) {
-  if (religionSelect.value === "") {
-    e.preventDefault(); // Hentikan pengiriman form
-    religionError.style.display = "block"; // Tampilkan pesan error
-    religionSelect.classList.add("is-invalid"); // Menambahkan kelas untuk border merah
-    religionSelect.focus(); // Fokus pada kolom agama
-  }
 });
 
 
-/**
-   * Pengaturan Form input perkawinan 
-   */
-const maritalSelect = document.getElementById("maritalStatus");
-const maritalError =
-  maritalSelect.parentElement.querySelector(".error-message");
 
-// Fungsi untuk validasi kolom saat perubahan pilihan
-maritalSelect.addEventListener("change", function () {
-  if (maritalSelect.value === "") {
-    maritalError.style.display = "block"; // Tampilkan pesan error
-    maritalSelect.classList.add("is-invalid"); // Menambahkan kelas untuk border merah
-  } else {
-    maritalError.style.display = "none"; // Sembunyikan pesan error
-    maritalSelect.classList.remove("is-invalid"); // Menghapus kelas border merah
-  }
-});
 
-// Validasi pada form submit
-document.getElementById("myForm").addEventListener("submit", function (e) {
-  if (maritalSelect.value === "") {
-    e.preventDefault(); // Hentikan pengiriman form
-    maritalError.style.display = "block"; // Tampilkan pesan error
-    maritalSelect.classList.add("is-invalid"); // Menambahkan kelas untuk border merah
-    maritalSelect.focus(); // Fokus pada kolom agama
-  }
-});
+
 
 
 
