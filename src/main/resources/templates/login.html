@@ -64,6 +64,11 @@
                     <p class="text-center small">Enter your Email & password to login</p>
                   </div>
 
+                  <div class="col-12">
+                    <p class="text-primary text-center" style="font-size: 1rem;" th:text="${success}"></p>
+                  </div>
+
+
                   <form class="row g-3 needs-validation" novalidate action="/proses-login" method="post">
 
                     <div class="col-12">
@@ -90,14 +95,7 @@
                       <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
-                    </div>
-                    <div class="col-12">
-                      <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
-                          <i class="bi bi-exclamation-triangle-fill me-1"></i>
-                          <span th:text="${error}"></span>
-                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
+                      <p class="text-danger text-center" style="font-size: 1rem;" th:text="${error}">Invalid email or password!</p>
                     </div>
                   </form>
 
