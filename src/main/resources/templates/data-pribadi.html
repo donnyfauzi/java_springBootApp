@@ -213,7 +213,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="layout/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <img src="layout/assets/img/profile-img.jpeg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -367,20 +367,19 @@
             <div class="card-body">
               <h5 class="card-title">Silahkan isi data di bawah ini:</h5>
               <!-- Browser Default Validation -->
-              <form id="myFormPhoto">
+              <form id="myForm">
                 <div class="row mb-3">
                   <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Photo Profil</label>
                   <div class="col-md-8 col-lg-9">
-                    <img src="/layout/assets/img/profile-img.jpg" alt="Profile">
+                    <img id="photoPreview" src="/layout/assets/img/profile-img.jpeg" alt="Pratinjau Foto" style="width: 150px; height: 150px; border-radius: 5px; object-fit: cover; border: 1px solid;"/>
                     <div class="pt-2">
-                      <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                      <input type="file" id="profileImageInput" accept="image/*" style="display: none;" />
+                      <button type="button" class="btn btn-primary btn-sm" onclick="triggerFileInput()"><i class="bi bi-upload"></i></button>
+                      <button type="button" class="btn btn-danger btn-sm" onclick="removePhoto()"><i class="bi bi-trash"></i></button>
                     </div>
                   </div>
                 </div>
-              </form>
-
-              <form action="" id="myForm">
+             
                 <div class="row mb-3">
                   <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">

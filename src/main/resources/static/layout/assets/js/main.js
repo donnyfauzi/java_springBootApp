@@ -430,6 +430,31 @@ $(document).ready(function () {
   });
 });
 
+// ambil foto dari defice
+document
+  .getElementById("profileImageInput")
+  .addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById("photoPreview").src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+function triggerFileInput() {
+  document.getElementById("profileImageInput").click();
+}
+
+function removePhoto() {
+  document.getElementById("photoPreview").src =
+    "/layout/assets/img/profile-img.jpeg";
+  document.getElementById("profileImageInput").value = ""; // Reset file input
+}
+
+
 
 
 
