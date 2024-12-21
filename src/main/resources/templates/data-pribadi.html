@@ -367,13 +367,13 @@
             <div class="card-body">
               <h5 class="card-title">Silahkan isi data di bawah ini:</h5>
               <!-- Browser Default Validation -->
-              <form id="myForm">
+              <form action="/save-data-pribadi" method="post" enctype="multipart/form-data" id="myForm" >
                 <div class="row mb-3">
                   <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Photo Profil</label>
                   <div class="col-md-8 col-lg-9">
                     <img id="photoPreview" src="/layout/assets/img/profile-img.jpeg" alt="Pratinjau Foto" style="width: 150px; height: 150px; border-radius: 5px; object-fit: cover; border: 1px solid;"/>
                     <div class="pt-2">
-                      <input type="file" id="profileImageInput" accept="image/*" style="display: none;" />
+                      <input type="file" name="profileImage" id="profileImageInput" accept="image/*" style="display: none;" />
                       <button type="button" class="btn btn-primary btn-sm" onclick="triggerFileInput()"><i class="bi bi-upload"></i></button>
                       <button type="button" class="btn btn-danger btn-sm" onclick="removePhoto()"><i class="bi bi-trash"></i></button>
                     </div>
@@ -419,7 +419,7 @@
                 </div>
 
                 <div class="row mb-3">
-                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Tempat Lahir<span class="small text-danger">*</span></label>
+                  <label for="tempatLahir" class="col-md-4 col-lg-3 col-form-label">Tempat Lahir<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <input name="tempatLahir" type="text" class="form-control" id="tempatLahir">
                     <small class="text-danger error-message">Kolom ini harus diisi !</small>
@@ -427,7 +427,7 @@
                 </div>
 
                 <div class="row mb-3">
-                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir<span class="small text-danger">*</span></label>
+                  <label for="tglLahir" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <input type="text" id="dateInput" class="form-control" placeholder="DD-MM-YYYY">
                     <small class="text-danger error-message">Kolom ini harus diisi !</small>
@@ -435,7 +435,7 @@
                 </div>
 
                 <div class="row mb-3">
-                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">No Telepon<span class="small text-danger">*</span></label>
+                  <label for="phone" class="col-md-4 col-lg-3 col-form-label">No Telepon<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <div class="input-group">
                       <span class="input-group-text">+62</span>
@@ -446,7 +446,7 @@
                 </div>
 
                 <div class="row mb-3">
-                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Alamat Email<span class="small text-danger">*</span></label>
+                  <label for="email" class="col-md-4 col-lg-3 col-form-label">Alamat Email<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <input name="email" type="email" class="form-control" id="emailInput">
                     <small class="text-danger error-message">Kolom ini harus diisi !</small>

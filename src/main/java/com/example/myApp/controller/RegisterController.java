@@ -24,14 +24,14 @@ public class RegisterController {
     }
 
     @PostMapping("/proses-register")
-public String processRegister(
-    @RequestParam String email,
-    @RequestParam String nama,
-    @RequestParam String password,
-    @RequestParam String confirm_password, // Tambahkan parameter
-    Model model,
-    RedirectAttributes redirectAttributes
-) {
+    public String processRegister(
+        @RequestParam String email,
+        @RequestParam String nama,
+        @RequestParam String password,
+        @RequestParam String confirm_password, // Tambahkan parameter
+        Model model,
+        RedirectAttributes redirectAttributes
+    ) {
     // Cek apakah email sudah terdaftar
     Optional<User> existingUser = userService.findByEmail(email);
     if (existingUser.isPresent()) {
