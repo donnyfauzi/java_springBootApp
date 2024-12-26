@@ -367,8 +367,8 @@
             <div class="card-body">
               <h5 class="card-title">Silahkan isi data di bawah ini:</h5>
               <!-- Browser Default Validation -->
-              <form action="/save-data-pribadi" method="post" enctype="multipart/form-data" id="myForm" >
-                <div class="row mb-3">
+              <form action="/save-data-pribadi" method="POST" id="myForm" >
+                <!-- <div class="row mb-3">
                   <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Photo Profil</label>
                   <div class="col-md-8 col-lg-9">
                     <img id="photoPreview" src="/layout/assets/img/profile-img.jpeg" alt="Pratinjau Foto" style="width: 150px; height: 150px; border-radius: 5px; object-fit: cover; border: 1px solid;"/>
@@ -378,12 +378,12 @@
                       <button type="button" class="btn btn-danger btn-sm" onclick="removePhoto()"><i class="bi bi-trash"></i></button>
                     </div>
                   </div>
-                </div>
+                </div> -->
              
                 <div class="row mb-3">
                   <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="fullName" type="text" class="form-control" id="fullName">
+                    <input name="nama" type="text" class="form-control" id="fullName">
                     <small class="text-danger error-message">Kolom ini harus diisi !</small>
                   </div>
                 </div>
@@ -391,7 +391,7 @@
                 <div class="row mb-3">
                   <label for="gender" class="col-md-4 col-lg-3 col-form-label">Jenis Kelamin<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <select name="gender" id="gender" class="form-control">
+                    <select name="jenisKelamin" id="gender" class="form-control">
                       <option value="" selected disabled>Pilih Jenis Kelamin</option>
                       <option value="Laki-Laki">Laki-Laki</option>
                       <option value="Perempuan">Perempuan</option>
@@ -405,7 +405,7 @@
                 <div class="row mb-3">
                   <label for="about" class="col-md-4 col-lg-3 col-form-label">Tentang Anda<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <textarea name="about" class="form-control" id="about" style="height: 100px"></textarea>
+                    <textarea name="tentangAnda" class="form-control" id="about" style="height: 100px"></textarea>
                     <small class="text-danger error-message">Kolom ini harus diisi !</small>
                   </div>
                 </div>
@@ -413,7 +413,7 @@
                 <div class="row mb-3">
                   <label for="address" class="col-md-4 col-lg-3 col-form-label">Alamat<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <textarea name="address" class="form-control" id="address" style="height: 100px"></textarea>
+                    <textarea name="alamat" class="form-control" id="address" style="height: 100px"></textarea>
                     <small class="text-danger error-message">Kolom ini harus diisi !</small>
                   </div>
                 </div>
@@ -429,7 +429,7 @@
                 <div class="row mb-3">
                   <label for="tglLahir" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <input type="text" id="dateInput" class="form-control" placeholder="DD-MM-YYYY">
+                    <input type="date" name="tanggalLahir" id="dateInput" class="form-control" placeholder="DD-MM-YYYY">
                     <small class="text-danger error-message">Kolom ini harus diisi !</small>
                   </div>
                 </div>
@@ -439,7 +439,7 @@
                   <div class="col-md-8 col-lg-9">
                     <div class="input-group">
                       <span class="input-group-text">+62</span>
-                      <input type="text" name="phone" class="form-control" id="phoneInput">
+                      <input type="text" name="noTlp" class="form-control" id="phoneInput">
                     </div>
                     <small class="text-danger error-message">Kolom ini harus diisi !</small>
                   </div>
@@ -456,7 +456,7 @@
                 <div class="row mb-3">
                   <label for="religion" class="col-md-4 col-lg-3 col-form-label">Agama<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <select name="religion" id="religion" class="form-control">
+                    <select name="agama" id="religion" class="form-control">
                       <option value="" selected disabled>Pilih Agama</option>
                       <option value="Islam">Islam</option>
                       <option value="Kristen Protestan">Kristen Protestan</option>
@@ -473,7 +473,7 @@
                 <div class="row mb-3">
                   <label for="maritalStatus" class="col-md-4 col-lg-3 col-form-label">Status Perkawinan<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <select name="maritalStatus" id="maritalStatus" class="form-control">
+                    <select name="statusPerkawinan" id="maritalStatus" class="form-control">
                       <option value="" selected disabled>Pilih Status Perkawinan</option>
                       <option value="Belum Menikah">Belum Menikah</option>
                       <option value="Menikah">Menikah</option>
@@ -494,7 +494,7 @@
                 <div class="row mb-3">
                   <label for="negara" class="col-md-4 col-lg-3 col-form-label">Warganegara<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="negara" type="text" class="form-control" id="negara">
+                    <input name="kewarganegaraan" type="text" class="form-control" id="negara">
                     <small class="text-danger error-message">Kolom ini harus diisi !</small>
                   </div>
                 </div>

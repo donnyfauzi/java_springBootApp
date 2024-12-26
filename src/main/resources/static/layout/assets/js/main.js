@@ -341,118 +341,118 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-/**
- * Pengaturan Form input
- */
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("myForm");
-  const inputs = document.querySelectorAll("input, textarea, select");
+// /**
+//  * Pengaturan Form input
+//  */
+// document.addEventListener("DOMContentLoaded", () => {
+//   const form = document.getElementById("myForm");
+//   const inputs = document.querySelectorAll("input, textarea, select");
 
-  // Fungsi untuk menampilkan atau menyembunyikan pesan error
-  function toggleError(input, isValid) {
-    const errorMessage = input.parentElement.querySelector(".error-message");
-    if (!isValid) {
-      input.classList.add("is-invalid");
-      if (errorMessage) errorMessage.style.display = "block";
-    } else {
-      input.classList.remove("is-invalid");
-      if (errorMessage) errorMessage.style.display = "none";
-    }
-  }
+//   // Fungsi untuk menampilkan atau menyembunyikan pesan error
+//   function toggleError(input, isValid) {
+//     const errorMessage = input.parentElement.querySelector(".error-message");
+//     if (!isValid) {
+//       input.classList.add("is-invalid");
+//       if (errorMessage) errorMessage.style.display = "block";
+//     } else {
+//       input.classList.remove("is-invalid");
+//       if (errorMessage) errorMessage.style.display = "none";
+//     }
+//   }
 
-  // Validasi real-time untuk semua input
-  inputs.forEach((input) => {
-    input.addEventListener("input", () => {
-      toggleError(input, input.value.trim() !== "");
-    });
-  });
+//   // Validasi real-time untuk semua input
+//   inputs.forEach((input) => {
+//     input.addEventListener("input", () => {
+//       toggleError(input, input.value.trim() !== "");
+//     });
+//   });
 
-  // Validasi khusus untuk elemen select
-  inputs.forEach((input) => {
-    if (input.tagName === "SELECT") {
-      input.addEventListener("change", () => {
-        toggleError(input, input.value !== "");
-      });
-    }
-  });
+//   // Validasi khusus untuk elemen select
+//   inputs.forEach((input) => {
+//     if (input.tagName === "SELECT") {
+//       input.addEventListener("change", () => {
+//         toggleError(input, input.value !== "");
+//       });
+//     }
+//   });
 
-  // Validasi saat form disubmit
-  form.addEventListener("submit", (e) => {
-    let isValid = true;
-    let firstInvalidInput = null; // Menyimpan elemen pertama yang tidak valid
+//   // Validasi saat form disubmit
+//   form.addEventListener("submit", (e) => {
+//     let isValid = true;
+//     let firstInvalidInput = null; // Menyimpan elemen pertama yang tidak valid
 
-    inputs.forEach((input) => {
-      const value = input.value.trim();
-      const isSelect = input.tagName === "SELECT";
-      const valid = isSelect ? value !== "" : value !== "";
-      toggleError(input, valid);
+//     inputs.forEach((input) => {
+//       const value = input.value.trim();
+//       const isSelect = input.tagName === "SELECT";
+//       const valid = isSelect ? value !== "" : value !== "";
+//       toggleError(input, valid);
 
-      if (!valid) {
-        isValid = false;
-        if (!firstInvalidInput) firstInvalidInput = input; // Catat elemen pertama yang tidak valid
-      }
-    });
+//       if (!valid) {
+//         isValid = false;
+//         if (!firstInvalidInput) firstInvalidInput = input; // Catat elemen pertama yang tidak valid
+//       }
+//     });
 
-    if (!isValid) {
-      e.preventDefault(); // Mencegah pengiriman form jika ada error
-      if (firstInvalidInput) firstInvalidInput.focus(); // Fokus pada elemen pertama yang tidak valid
-    }
-  });
-});
+//     if (!isValid) {
+//       e.preventDefault(); // Mencegah pengiriman form jika ada error
+//       if (firstInvalidInput) firstInvalidInput.focus(); // Fokus pada elemen pertama yang tidak valid
+//     }
+//   });
+// });
 
-/**
- * Pengaturan Datepicker untuk input tanggal lahir
- */
-$(document).ready(function () {
-  $("#dateInput").datepicker({
-    dateFormat: "dd-mm-yy",
-    changeMonth: true,
-    changeYear: true,
-    yearRange: "1900:2100",
-  });
+// /**
+//  * Pengaturan Datepicker untuk input tanggal lahir
+//  */
+// $(document).ready(function () {
+//   $("#dateInput").datepicker({
+//     dateFormat: "dd-mm-yy",
+//     changeMonth: true,
+//     changeYear: true,
+//     yearRange: "1900:2100",
+//   });
 
-  const dateInput = $("#dateInput");
-  const dateError = dateInput.next(".error-message");
+//   const dateInput = $("#dateInput");
+//   const dateError = dateInput.next(".error-message");
 
-  dateInput.on("input change", function () {
-    const isValid = dateInput.val().trim() !== "";
-    dateInput.toggleClass("is-invalid", !isValid);
-    dateError.toggle(!isValid);
-  });
+//   dateInput.on("input change", function () {
+//     const isValid = dateInput.val().trim() !== "";
+//     dateInput.toggleClass("is-invalid", !isValid);
+//     dateError.toggle(!isValid);
+//   });
 
-  $("#myForm").on("submit", function (e) {
-    if (dateInput.val().trim() === "") {
-      dateError.text("Kolom ini harus diisi!").show();
-      dateInput.addClass("is-invalid");
-      dateInput.focus(); // Fokus pada input tanggal jika tidak valid
-      e.preventDefault(); // Hentikan pengiriman form
-    }
-  });
-});
+//   $("#myForm").on("submit", function (e) {
+//     if (dateInput.val().trim() === "") {
+//       dateError.text("Kolom ini harus diisi!").show();
+//       dateInput.addClass("is-invalid");
+//       dateInput.focus(); // Fokus pada input tanggal jika tidak valid
+//       e.preventDefault(); // Hentikan pengiriman form
+//     }
+//   });
+// });
 
-// ambil foto dari defice
-document
-  .getElementById("profileImageInput")
-  .addEventListener("change", function (event) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        document.getElementById("photoPreview").src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  });
+// // ambil foto dari defice
+// document
+//   .getElementById("profileImageInput")
+//   .addEventListener("change", function (event) {
+//     const file = event.target.files[0];
+//     if (file) {
+//       const reader = new FileReader();
+//       reader.onload = function (e) {
+//         document.getElementById("photoPreview").src = e.target.result;
+//       };
+//       reader.readAsDataURL(file);
+//     }
+//   });
 
-function triggerFileInput() {
-  document.getElementById("profileImageInput").click();
-}
+// function triggerFileInput() {
+//   document.getElementById("profileImageInput").click();
+// }
 
-function removePhoto() {
-  document.getElementById("photoPreview").src =
-    "/layout/assets/img/profile-img.jpeg";
-  document.getElementById("profileImageInput").value = ""; // Reset file input
-}
+// function removePhoto() {
+//   document.getElementById("photoPreview").src =
+//     "/layout/assets/img/profile-img.jpeg";
+//   document.getElementById("profileImageInput").value = ""; // Reset file input
+// }
 
 
 
