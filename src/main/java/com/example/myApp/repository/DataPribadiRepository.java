@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface DataPribadiRepository extends JpaRepository<DataPribadi, Long> {
-          DataPribadi findByUserId(Long userId);         
+                
 }

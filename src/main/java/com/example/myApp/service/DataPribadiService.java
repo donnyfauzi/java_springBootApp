@@ -28,11 +28,6 @@ public class DataPribadiService {
         return dataPribadiRepository.findById(id);
     }
 
-    // Mendapatkan data pribadi berdasarkan User ID
-    public Optional<DataPribadi> getDataPribadiByUserId(Long userId) {
-        return Optional.ofNullable(dataPribadiRepository.findByUserId(userId));
-    }
-
     // Menghapus data pribadi berdasarkan ID
     public void deleteDataPribadiById(Long id) {
         dataPribadiRepository.deleteById(id);
