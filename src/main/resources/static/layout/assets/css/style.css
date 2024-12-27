@@ -1241,11 +1241,6 @@ h6 {
   .is-invalid {
     border: 1px solid red;
   }
-  .error-message {
-    color: red;
-    font-size: 0.875rem;
-    display: none;
-  }
 
   
   .ui-datepicker {

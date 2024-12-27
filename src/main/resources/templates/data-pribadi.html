@@ -383,20 +383,20 @@
                 <div class="row mb-3">
                   <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="nama" type="text" class="form-control" id="fullName">
-                    <div class="error-message" th:if="${#fields.hasErrors('nama')}" th:errors="*{nama}"></div>
+                    <input name="nama" type="text" class="form-control" id="fullName" th:classappend="${errorNama != null ? ' is-invalid' : ''}">
+                    <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorNama}"></p>
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label for="gender" class="col-md-4 col-lg-3 col-form-label">Jenis Kelamin<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <select name="jenis_kelamin" id="gender" class="form-control">
+                    <select name="jenis_kelamin" id="gender" class="form-control"  th:classappend="${errorJenisKelamin != null ? ' is-invalid' : ''}">
                       <option value="" selected disabled>Pilih Jenis Kelamin</option>
                       <option value="Laki-Laki">Laki-Laki</option>
                       <option value="Perempuan">Perempuan</option>
                     </select>
-                    <div class="error-message" th:if="${#fields.hasErrors('jenisKelamin')}" th:errors="*{jenisKelamin}"></div>
+                    <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorJenisKelamin}"></p>
                   </div>
                 </div>
 
@@ -405,8 +405,8 @@
                 <div class="row mb-3">
                   <label for="about" class="col-md-4 col-lg-3 col-form-label">Tentang Anda<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <textarea name="tentang_anda" class="form-control" id="about" style="height: 100px"></textarea>
-                    <div class="error-message" th:if="${#fields.hasErrors('tentangAnda')}" th:errors="*{tentangAnda}"></div>
+                    <textarea name="tentang_anda" class="form-control" id="about" style="height: 100px" th:classappend="${errorTentangAnda != null ? ' is-invalid' : ''}"></textarea>
+                    <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorTentangAnda}"></p>
                   </div>
                 </div>
 
@@ -414,7 +414,7 @@
                   <label for="address" class="col-md-4 col-lg-3 col-form-label">Alamat<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <textarea name="alamat" class="form-control" id="address" style="height: 100px"></textarea>
-                    <div class="error-message" th:if="${#fields.hasErrors('alamat')}" th:errors="*{alamat}"></div>
+                    <!-- <div class="error-message" th:if="${#fields.hasErrors('alamat')}" th:errors="*{alamat}"></div> -->
                   </div>
                 </div>
 
@@ -422,7 +422,7 @@
                   <label for="tempatLahir" class="col-md-4 col-lg-3 col-form-label">Tempat Lahir<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <input name="tempat_lahir" type="text" class="form-control" id="tempatLahir">
-                    <div class="error-message" th:if="${#fields.hasErrors('tempatLahir')}" th:errors="*{tempatLahir}"></div>
+                    <!-- <div class="error-message" th:if="${#fields.hasErrors('tempatLahir')}" th:errors="*{tempatLahir}"></div> -->
                   </div>
                 </div>
 
@@ -430,7 +430,7 @@
                   <label for="tglLahir" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <input type="date" name="tanggal_lahir" id="dateInput" class="form-control" placeholder="DD-MM-YYYY">
-                    <div class="error-message" th:if="${#fields.hasErrors('tanggalLahir')}" th:errors="*{tanggalLahir}"></div>
+                    <!-- <div class="error-message" th:if="${#fields.hasErrors('tanggalLahir')}" th:errors="*{tanggalLahir}"></div> -->
                   </div>
                 </div>
 
@@ -441,7 +441,7 @@
                       <span class="input-group-text">+62</span>
                       <input type="text" name="no_tlp" class="form-control" id="phoneInput">
                     </div>
-                    <div class="error-message" th:if="${#fields.hasErrors('noTlp')}" th:errors="*{noTlp}"></div>
+                    <!-- <div class="error-message" th:if="${#fields.hasErrors('noTlp')}" th:errors="*{noTlp}"></div> -->
                   </div>
                 </div>
 
@@ -449,7 +449,7 @@
                   <label for="email" class="col-md-4 col-lg-3 col-form-label">Alamat Email<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <input name="email" type="email" class="form-control" id="emailInput">
-                    <div class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                    <!-- <div class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div> -->
                   </div>
                 </div>
 
@@ -466,7 +466,7 @@
                       <option value="Konghucu">Konghucu</option>
                       <option value="Lainnya">Lainnya</option>
                     </select>
-                    <div class="error-message" th:if="${#fields.hasErrors('agama')}" th:errors="*{agama}"></div>
+                    <!-- <div class="error-message" th:if="${#fields.hasErrors('agama')}" th:errors="*{agama}"></div> -->
                   </div>
                 </div>
 
@@ -479,7 +479,7 @@
                       <option value="Menikah">Menikah</option>
                       <option value="Cerai Hidup">Cerai</option>
                     </select>
-                    <div class="error-message" th:if="${#fields.hasErrors('statusPerkawinan')}" th:errors="*{statusPerkawinan}"></div>
+                    <!-- <div class="error-message" th:if="${#fields.hasErrors('statusPerkawinan')}" th:errors="*{statusPerkawinan}"></div> -->
                   </div>
                 </div>
 
@@ -487,7 +487,7 @@
                   <label for="golDarah" class="col-md-4 col-lg-3 col-form-label">Gol Darah<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <input name="gol_darah" type="text" class="form-control" id="golDarah">
-                    <div class="error-message" th:if="${#fields.hasErrors('golDarah')}" th:errors="*{golDarah}"></div>
+                    <!-- <div class="error-message" th:if="${#fields.hasErrors('golDarah')}" th:errors="*{golDarah}"></div> -->
                   </div>
                 </div>
 
@@ -495,7 +495,7 @@
                   <label for="negara" class="col-md-4 col-lg-3 col-form-label">Warganegara<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
                     <input name="kewarganegaraan" type="text" class="form-control" id="negara">
-                    <div class="error-message" th:if="${#fields.hasErrors('kewarganegaraan')}" th:errors="*{kewarganegaraan}"></div>
+                    <!-- <div class="error-message" th:if="${#fields.hasErrors('kewarganegaraan')}" th:errors="*{kewarganegaraan}"></div> -->
                   </div>
                 </div>
 

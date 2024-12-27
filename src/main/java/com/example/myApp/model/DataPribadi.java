@@ -5,9 +5,6 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-
 @Entity
 @Table(name = "tb_data_pribadi")
 public class DataPribadi {
@@ -17,51 +14,39 @@ public class DataPribadi {
           private Long id;
 
           @Column(name = "nama")
-          @NotEmpty(message = "Nama tidak boleh kosong!")
           private String nama;
 
           @Column(name = "jenis_kelamin")
-          @NotEmpty(message = "Jenis Kelamin tidak boleh kosong!")
           private String jenisKelamin;
 
           @Column(name = "tentang_anda")
-          @NotEmpty(message = "Tentang Anda tidak boleh kosong!")
           private String tentangAnda;
           
           @Column(name = "alamat")
-          @NotEmpty(message = "Alamat tidak boleh kosong!")
           private String alamat;
 
           @Column(name = "tempat_lahir")
-          @NotEmpty(message = "Tempat Lahir tidak boleh kosong!")
           private String tempatLahir;
 
           @Column(name = "tanggal_lahir")
-          @NotNull(message = "Tanggal Lahir tidak boleh kosong!")
           private LocalDate tanggalLahir;
 
           @Column(name = "no_tlp")
-          @NotEmpty(message = "Nomor Telepon tidak boleh kosong!")
           private String noTlp;
 
           @Column(name = "email")
-          @NotEmpty(message = "Email tidak boleh kosong!")
           private String email;
 
           @Column(name = "agama")
-          @NotEmpty(message = "Agama tidak boleh kosong!")
           private String agama;
 
           @Column(name = "status_perkawinan")
-          @NotEmpty(message = "Status Perkawinan tidak boleh kosong!")
           private String statusPerkawinan;
 
           @Column(name = "gol_darah")
-          @NotEmpty(message = "Golongan Darah tidak boleh kosong!")
           private String golDarah;
 
           @Column(name = "kewarganegaraan")
-          @NotEmpty(message = "Kewarganegaraan tidak boleh kosong!")
           private String kewarganegaraan;
 
           @Column(name = "created_at", updatable = false)
