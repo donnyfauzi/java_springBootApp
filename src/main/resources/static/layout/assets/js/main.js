@@ -318,28 +318,28 @@
 
 })();
 
-/**
-   * Pengaturan Status
-   */
-document.addEventListener("DOMContentLoaded", () => {
-  const statusIndicator = document.getElementById("status-indicator"); // Elemen indikator status
-  const statusText = document.getElementById("status-text"); // Elemen teks status
+// /**
+//    * Pengaturan Status
+//    */
+// document.addEventListener("DOMContentLoaded", () => {
+//   const statusIndicator = document.getElementById("status-indicator"); // Elemen indikator status
+//   const statusText = document.getElementById("status-text"); // Elemen teks status
 
-  fetch("/status")
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.isLoggedIn) {
-        statusIndicator.style.backgroundColor = "green";
-        statusText.textContent = data.statusText; // Tampilkan "Aktif"
-      } else {
-        statusIndicator.style.backgroundColor = "red";
-        statusText.textContent = data.statusText; // Tampilkan "Tidak Aktif"
-      }
-    })
-    .catch((error) => {
-      console.error("Error fetching status:", error);
-    });
-});
+//   fetch("/status")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       if (data.isLoggedIn) {
+//         statusIndicator.style.backgroundColor = "green";
+//         statusText.textContent = data.statusText; // Tampilkan "Aktif"
+//       } else {
+//         statusIndicator.style.backgroundColor = "red";
+//         statusText.textContent = data.statusText; // Tampilkan "Tidak Aktif"
+//       }
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching status:", error);
+//     });
+// });
 
 // /**
 //  * Pengaturan Form input
