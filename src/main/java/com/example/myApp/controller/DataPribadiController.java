@@ -43,14 +43,25 @@ public class DataPribadiController {
             RedirectAttributes redirectAttributes,
             Model model
     ) {
+        // mengembalikan nilai input
         model.addAttribute("nama", nama);
-        //validasi input
+        model.addAttribute("jenisKelamin", jenisKelamin);
+        model.addAttribute("tentangAnda", tentangAnda);
+        model.addAttribute("alamat", alamat);
+        model.addAttribute("tempatLahir", tempatLahir);
+        model.addAttribute("tanggalLahir", tanggalLahir);
+        model.addAttribute("noTlp", noTlp);
+        model.addAttribute("email", email);
+        model.addAttribute("agama", agama);
+        model.addAttribute("statusPerkawinan", statusPerkawinan);
+        model.addAttribute("statusPerkawinan", statusPerkawinan);
+        model.addAttribute("kewarganegaraan", kewarganegaraan);
+
+        // validasi input
         if (nama == null || nama.trim().isEmpty()) {
             model.addAttribute("errorNama", "Nama tidak boleh kosong !");
             return "data-pribadi"; // Kembali ke halaman dengan pesan error
         }
-
-        System.out.println("Nama: " + nama);
 
         if (jenisKelamin == null || jenisKelamin.trim().isEmpty()) {
             model.addAttribute("errorJenisKelamin", "Jenis Kelamin harus diisi !");
@@ -106,9 +117,6 @@ public class DataPribadiController {
             model.addAttribute("errorKewarganegaraan", "Kewarganegaraan harus diisi !");
             return "data-pribadi";
         }
-
-        
-
 
         // Membuat objek DataPribadi dan mengisinya dengan data dari form
         DataPribadi dataPribadi = new DataPribadi();

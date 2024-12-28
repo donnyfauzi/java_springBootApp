@@ -393,8 +393,8 @@
                   <div class="col-md-8 col-lg-9">
                     <select name="jenis_kelamin" id="gender" class="form-control"  th:classappend="${errorJenisKelamin != null ? ' is-invalid' : ''}">
                       <option value="" selected disabled>Pilih Jenis Kelamin</option>
-                      <option value="Laki-Laki">Laki-Laki</option>
-                      <option value="Perempuan">Perempuan</option>
+                      <option value="Laki-Laki" th:selected="${jenisKelamin == 'Laki-Laki'}">Laki-Laki</option>
+                      <option value="Perempuan" th:selected="${jenisKelamin == 'Perempuan'}">Perempuan</option>
                     </select>
                     <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorJenisKelamin}"></p>
                   </div>
@@ -405,7 +405,7 @@
                 <div class="row mb-3">
                   <label for="about" class="col-md-4 col-lg-3 col-form-label">Tentang Anda<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <textarea name="tentang_anda" class="form-control" id="about" style="height: 100px" th:classappend="${errorTentangAnda != null ? ' is-invalid' : ''}"></textarea>
+                    <textarea name="tentang_anda" class="form-control" id="about" style="height: 100px" th:text="${tentangAnda}" th:classappend="${errorTentangAnda != null ? ' is-invalid' : ''}"></textarea>
                     <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorTentangAnda}"></p>
                   </div>
                 </div>
@@ -413,7 +413,7 @@
                 <div class="row mb-3">
                   <label for="address" class="col-md-4 col-lg-3 col-form-label">Alamat<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <textarea name="alamat" class="form-control" id="address" style="height: 100px" th:classappend="${errorAlamat != null ? ' is-invalid' : ''}"></textarea>
+                    <textarea name="alamat" class="form-control" id="address" style="height: 100px" th:text="${alamat}" th:classappend="${errorAlamat != null ? ' is-invalid' : ''}"></textarea>
                     <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorAlamat}"></p>
                   </div>
                 </div>
@@ -421,7 +421,7 @@
                 <div class="row mb-3">
                   <label for="tempatLahir" class="col-md-4 col-lg-3 col-form-label">Tempat Lahir<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="tempat_lahir" type="text" class="form-control" id="tempatLahir" th:classappend="${errorTempatLahir != null ? ' is-invalid' : ''}">
+                    <input name="tempat_lahir" type="text" class="form-control" id="tempatLahir" th:value="${tempatLahir}" th:classappend="${errorTempatLahir != null ? ' is-invalid' : ''}">
                     <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorTempatLahir}"></p>
                   </div>
                 </div>
@@ -429,7 +429,7 @@
                 <div class="row mb-3">
                   <label for="tglLahir" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <input type="date" name="tanggal_lahir" id="dateInput" class="form-control" placeholder="DD-MM-YYYY" th:classappend="${errorTanggalLahir != null ? ' is-invalid' : ''}">
+                    <input type="date" name="tanggal_lahir" id="dateInput" class="form-control" th:value="${tanggalLahir}" th:classappend="${errorTanggalLahir != null ? ' is-invalid' : ''}">
                     <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorTanggalLahir}"></p>
                   </div>
                 </div>
@@ -439,7 +439,7 @@
                   <div class="col-md-8 col-lg-9">
                     <div class="input-group">
                       <span class="input-group-text">+62</span>
-                      <input type="text" name="no_tlp" class="form-control" id="phoneInput" th:classappend="${errorNoTlp != null ? ' is-invalid' : ''}">
+                      <input type="text" name="no_tlp" class="form-control" id="phoneInput" th:value="${noTlp}" th:classappend="${errorNoTlp != null ? ' is-invalid' : ''}">
                     </div>
                     <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorNoTlp}"></p>
                   </div>
@@ -448,7 +448,7 @@
                 <div class="row mb-3">
                   <label for="email" class="col-md-4 col-lg-3 col-form-label">Alamat Email<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="email" type="email" class="form-control" id="emailInput" th:classappend="${errorEmail != null ? ' is-invalid' : ''}">
+                    <input name="email" type="email" class="form-control" id="emailInput" th:value="${email}" th:classappend="${errorEmail != null ? ' is-invalid' : ''}">
                     <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorEmail}"></p>
                   </div>
                 </div>
@@ -458,13 +458,13 @@
                   <div class="col-md-8 col-lg-9">
                     <select name="agama" id="religion" class="form-control" th:classappend="${errorAgama != null ? ' is-invalid' : ''}">
                       <option value="" selected disabled>Pilih Agama</option>
-                      <option value="Islam">Islam</option>
-                      <option value="Kristen Protestan">Kristen Protestan</option>
-                      <option value="Kristen Katolik">Kristen Katolik</option>
-                      <option value="Hindu">Hindu</option>
-                      <option value="Buddha">Buddha</option>
-                      <option value="Konghucu">Konghucu</option>
-                      <option value="Lainnya">Lainnya</option>
+                      <option value="Islam" th:selected="${agama == 'Islam'}">Islam</option>
+                      <option value="Kristen Protestan" th:selected="${agama == 'Kristen Protestan'}">Kristen Protestan</option>
+                      <option value="Kristen Katolik" th:selected="${agama == 'Kristen Katolik'}">Kristen Katolik</option>
+                      <option value="Hindu" th:selected="${agama == 'Hindu'}">Hindu</option>
+                      <option value="Buddha" th:selected="${agama == 'Buddha'}">Buddha</option>
+                      <option value="Konghucu" th:selected="${agama == 'Konghucu'}">Konghucu</option>
+                      <option value="Lainnya" th:selected="${agama == 'Lainnya'}">Lainnya</option>
                     </select>
                     <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorAgama}"></p>
                   </div>
@@ -475,9 +475,9 @@
                   <div class="col-md-8 col-lg-9">
                     <select name="status_perkawinan" id="maritalStatus" class="form-control" th:classappend="${errorStatusPerkawinan != null ? ' is-invalid' : ''}">
                       <option value="" selected disabled>Pilih Status Perkawinan</option>
-                      <option value="Belum Menikah">Belum Menikah</option>
-                      <option value="Menikah">Menikah</option>
-                      <option value="Cerai Hidup">Cerai</option>
+                      <option value="Belum Menikah" th:selected="${statusPerkawinan == 'Belum Menikah'}">Belum Menikah</option>
+                      <option value="Menikah" th:selected="${statusPerkawinan == 'Menikah'}">Menikah</option>
+                      <option value="Cerai" th:selected="${statusPerkawinan == 'Cerai'}">Cerai</option>
                     </select>
                     <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorStatusPerkawinan}"></p>
                   </div>
@@ -486,7 +486,7 @@
                 <div class="row mb-3">
                   <label for="golDarah" class="col-md-4 col-lg-3 col-form-label">Gol Darah<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="gol_darah" type="text" class="form-control" id="golDarah" th:classappend="${errorGolDarah != null ? ' is-invalid' : ''}">
+                    <input name="gol_darah" type="text" class="form-control" id="golDarah" th:value="${golDarah}" th:classappend="${errorGolDarah != null ? ' is-invalid' : ''}">
                     <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorGolDarah}"></p>
                   </div>
                 </div>
@@ -494,7 +494,7 @@
                 <div class="row mb-3">
                   <label for="negara" class="col-md-4 col-lg-3 col-form-label">Warganegara<span class="small text-danger">*</span></label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="kewarganegaraan" type="text" class="form-control" id="negara" th:classappend="${errorKewarganegaraan != null ? ' is-invalid' : ''}">
+                    <input name="kewarganegaraan" type="text" class="form-control" id="negara" th:value="${kewarganegaraan}" th:classappend="${errorKewarganegaraan != null ? ' is-invalid' : ''}">
                     <p class="text-danger text-left" style="font-size: 0.7rem;" th:text="${errorKewarganegaraan}"></p>
                   </div>
                 </div>
