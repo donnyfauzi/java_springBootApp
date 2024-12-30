@@ -52,10 +52,6 @@ public class DataPribadi {
           @Column(name = "created_at", updatable = false)
           private LocalDateTime createdAt = LocalDateTime.now();
 
-          @ManyToOne
-          @JoinColumn(name = "user_id", nullable = false) // Foreign key ke tabel User
-          private User user;
-
           // Getter dan Setter
           public Long getId() {
           return id;
@@ -166,11 +162,9 @@ public class DataPribadi {
           }
 
           public void setCreatedAt(LocalDateTime createdAt) {
-                    this.createdAt = createdAt;
+          this.createdAt = createdAt;
           }
           
-          public void setUser(User user) {
-                    this.user = user;
-          }
+          
 
 }

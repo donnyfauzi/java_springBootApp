@@ -11,13 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.myApp.model.DataPribadi;
-import com.example.myApp.model.User;
 import com.example.myApp.service.DataPribadiService;
-
-
-import jakarta.servlet.http.HttpSession;
-
-
 
 @Controller
 public class DataPribadiController {
@@ -47,8 +41,8 @@ public class DataPribadiController {
         @RequestParam("gol_darah") String golDarah,
         @RequestParam("kewarganegaraan") String kewarganegaraan,
         RedirectAttributes redirectAttributes,
-        Model model,
-        HttpSession session // Mengambil session
+        Model model
+        
     ) {
         // mengembalikan nilai input
         model.addAttribute("nama", nama);
@@ -125,13 +119,6 @@ public class DataPribadiController {
             return "data-pribadi";
         }
 
-        // Mengambil data user yang login dari session
-        User currentUser = (User) session.getAttribute("currentUser");
-        if (currentUser == null) {
-            // Jika tidak ada user yang login, arahkan ke halaman login
-            return "redirect:/login";
-        }
-
         // Membuat objek DataPribadi dan mengisinya dengan data dari form
         DataPribadi dataPribadi = new DataPribadi();
         dataPribadi.setNama(nama);
@@ -147,9 +134,6 @@ public class DataPribadiController {
         dataPribadi.setGolDarah(golDarah);
         dataPribadi.setKewarganegaraan(kewarganegaraan);
         
-        // Menambahkan user ke DataPribadi
-        dataPribadi.setUser(currentUser);
-
         // Menyimpan data ke database
         dataPribadiService.saveOrUpdate(dataPribadi);
 
