@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.myApp.model.DataPribadi;
+import com.example.myApp.model.User;
 import com.example.myApp.service.DataPribadiService;
+
+
+import jakarta.servlet.http.HttpSession;
 
 
 
@@ -21,6 +25,8 @@ public class DataPribadiController {
     @Autowired
     private DataPribadiService dataPribadiService;
 
+    
+
     @GetMapping("/data-pribadi")
     public String showPengguna(Model model) {
         return "data-pribadi";
@@ -28,20 +34,21 @@ public class DataPribadiController {
 
     @PostMapping("/save-data-pribadi")
     public String uploadDataPribadi(
-            @RequestParam("nama") String nama,
-            @RequestParam(value="jenis_kelamin", required = false) String jenisKelamin,
-            @RequestParam("tentang_anda") String tentangAnda,
-            @RequestParam("alamat") String alamat,
-            @RequestParam("tempat_lahir") String tempatLahir,
-            @RequestParam(value = "tanggal_lahir", required = false) String tanggalLahir,
-            @RequestParam("no_tlp") String noTlp,
-            @RequestParam("email") String email,
-            @RequestParam(value = "agama", required = false) String agama,
-            @RequestParam(value = "status_perkawinan", required = false) String statusPerkawinan,
-            @RequestParam("gol_darah") String golDarah,
-            @RequestParam("kewarganegaraan") String kewarganegaraan,
-            RedirectAttributes redirectAttributes,
-            Model model
+        @RequestParam("nama") String nama,
+        @RequestParam(value="jenis_kelamin", required = false) String jenisKelamin,
+        @RequestParam("tentang_anda") String tentangAnda,
+        @RequestParam("alamat") String alamat,
+        @RequestParam("tempat_lahir") String tempatLahir,
+        @RequestParam(value = "tanggal_lahir", required = false) String tanggalLahir,
+        @RequestParam("no_tlp") String noTlp,
+        @RequestParam("email") String email,
+        @RequestParam(value = "agama", required = false) String agama,
+        @RequestParam(value = "status_perkawinan", required = false) String statusPerkawinan,
+        @RequestParam("gol_darah") String golDarah,
+        @RequestParam("kewarganegaraan") String kewarganegaraan,
+        RedirectAttributes redirectAttributes,
+        Model model,
+        HttpSession session // Mengambil session
     ) {
         // mengembalikan nilai input
         model.addAttribute("nama", nama);
@@ -118,6 +125,13 @@ public class DataPribadiController {
             return "data-pribadi";
         }
 
+        // Mengambil data user yang login dari session
+        User currentUser = (User) session.getAttribute("currentUser");
+        if (currentUser == null) {
+            // Jika tidak ada user yang login, arahkan ke halaman login
+            return "redirect:/login";
+        }
+
         // Membuat objek DataPribadi dan mengisinya dengan data dari form
         DataPribadi dataPribadi = new DataPribadi();
         dataPribadi.setNama(nama);
@@ -132,6 +146,9 @@ public class DataPribadiController {
         dataPribadi.setStatusPerkawinan(statusPerkawinan);
         dataPribadi.setGolDarah(golDarah);
         dataPribadi.setKewarganegaraan(kewarganegaraan);
+        
+        // Menambahkan user ke DataPribadi
+        dataPribadi.setUser(currentUser);
 
         // Menyimpan data ke database
         dataPribadiService.saveOrUpdate(dataPribadi);
@@ -139,13 +156,8 @@ public class DataPribadiController {
         // Redirect dengan pesan sukses
         redirectAttributes.addFlashAttribute("successMessage", "Data berhasil di-upload!");
         return "redirect:/data-pribadi"; // Kembali ke halaman yang menampilkan data
-
-        
-
     }
-    
-    
-    
+     
 }
 
 

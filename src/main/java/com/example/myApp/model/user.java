@@ -4,7 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_users") // Nama tabel di database
@@ -16,6 +19,10 @@ public class User {
     private String nama;
     private String email;
     private String password;
+
+    // Relasi dengan DataPribadi (opsional, jika ingin mengakses data pribadi dari User)
+    @OneToMany(mappedBy = "user")
+    private List<DataPribadi> dataPribadiList;
 
     // Getters dan Setters
 

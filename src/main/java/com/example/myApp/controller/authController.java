@@ -5,11 +5,8 @@ import com.example.myApp.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -64,24 +61,24 @@ public class AuthController {
         return "login";
     }
     
-    @GetMapping("/status")
-    public ResponseEntity<Map<String, Object>> getStatus(HttpSession session) {
-        User user = (User) session.getAttribute("user"); // Ambil user dari session
-        Map<String, Object> response = new HashMap<>();
+    // @GetMapping("/status")
+    // public ResponseEntity<Map<String, Object>> getStatus(HttpSession session) {
+    //     User user = (User) session.getAttribute("user"); // Ambil user dari session
+    //     Map<String, Object> response = new HashMap<>();
 
-        if (user != null) {
-            // Jika pengguna sedang login
-            response.put("isLoggedIn", true);
-            response.put("statusText", "Aktif");
-            response.put("userName", user.getNama()); // Misalnya untuk menampilkan nama pengguna
-        } else {
-            // Jika pengguna tidak login
-            response.put("isLoggedIn", false);
-            response.put("statusText", "Tidak Aktif");
-        }
+    //     if (user != null) {
+    //         // Jika pengguna sedang login
+    //         response.put("isLoggedIn", true);
+    //         response.put("statusText", "Aktif");
+    //         response.put("userName", user.getNama()); // Misalnya untuk menampilkan nama pengguna
+    //     } else {
+    //         // Jika pengguna tidak login
+    //         response.put("isLoggedIn", false);
+    //         response.put("statusText", "Tidak Aktif");
+    //     }
 
-        return ResponseEntity.ok(response);
-    }
+    //     return ResponseEntity.ok(response);
+    // }
     
     
 }
