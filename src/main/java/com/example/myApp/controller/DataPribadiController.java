@@ -44,7 +44,8 @@ public class DataPribadiController {
         Model model
         
     ) {
-        // mengembalikan nilai input
+        try {
+            // mengembalikan nilai input
         model.addAttribute("nama", nama);
         model.addAttribute("jenisKelamin", jenisKelamin);
         model.addAttribute("tentangAnda", tentangAnda);
@@ -140,6 +141,13 @@ public class DataPribadiController {
         // Redirect dengan pesan sukses
         redirectAttributes.addFlashAttribute("successMessage", "Data berhasil di-upload!");
         return "redirect:/data-pribadi"; // Kembali ke halaman yang menampilkan data
+
+        } catch(Exception e) {
+            // Tangani error upload dan kirim pesan error ke view
+            redirectAttributes.addFlashAttribute("errorMessage", "Terjadi kesalahan saat menyimpan data: " + e.getMessage());
+            return "redirect:/data-pribadi";
+        }
+           
     }
      
 }
