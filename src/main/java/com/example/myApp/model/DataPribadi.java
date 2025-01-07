@@ -52,6 +52,10 @@ public class DataPribadi {
           @Column(name = "created_at", updatable = false)
           private LocalDateTime createdAt = LocalDateTime.now();
 
+          @OneToOne
+          @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+          private User user;
+
           // Getter dan Setter
           public Long getId() {
           return id;
@@ -162,9 +166,16 @@ public class DataPribadi {
           }
 
           public void setCreatedAt(LocalDateTime createdAt) {
-          this.createdAt = createdAt;
+                    this.createdAt = createdAt;
           }
           
+          public User getUser() {
+          return user;
+          }
+
+          public void setUser(User user) {
+          this.user = user;
+          }
           
 
 }

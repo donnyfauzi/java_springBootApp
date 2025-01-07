@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AuthController {
@@ -36,30 +37,49 @@ public class AuthController {
     }
 
     @PostMapping("/proses-login")
-    public String processLogin(@RequestParam String email, @RequestParam String password, Model model,
-            HttpSession session) {
-        Optional<User> user = userService.findByEmail(email);
-
-        System.out.println("Email: " + email);
-        System.out.println("Password Input: " + password);
-
-        if (user.isPresent()) {
-            // Menggunakan passwordEncoder.matches untuk memverifikasi password
-            boolean passwordMatch = passwordEncoder.matches(password, user.get().getPassword());
-            System.out.println("User Found: " + user.get().getEmail() + ", Password: " + user.get().getPassword());
-
-            if (passwordMatch) {
-                // Jika login berhasil, simpan informasi pengguna di dalam session
-                session.setAttribute("user", user.get());
-                // Jika login berhasil, arahkan ke halaman beranda atau dashboard
-                return "redirect:/dashboard";
-            }
-        }
-
-        // Jika login gagal, kembali ke halaman login dengan pesan error
-        model.addAttribute("error", "Invalid email or password");
-        return "login";
+public String processLogin(@RequestParam String email, 
+                           @RequestParam String password, 
+                           Model model, 
+                           HttpSession session, 
+                           RedirectAttributes redirectAttributes) {
+    // Validasi input
+    if (email.isEmpty() || password.isEmpty()) {
+        redirectAttributes.addFlashAttribute("error", "Email dan Password harus diisi!");
+        return "redirect:/login";
     }
+
+    // Mencari user berdasarkan email
+    Optional<User> user = userService.findByEmail(email);
+
+    // Logging untuk debugging
+    System.out.println("Email: " + email);
+    System.out.println("Password Input: " + password);
+
+    if (user.isPresent()) {
+        boolean passwordMatch = passwordEncoder.matches(password, user.get().getPassword());
+
+        // Debugging informasi user
+        System.out.println("User Found: " + user.get().getEmail() + ", Password (hashed): " + user.get().getPassword());
+
+        if (passwordMatch) {
+            // Jika login berhasil, simpan user ke dalam session
+            session.setAttribute("user", user.get());
+            System.out.println("Login Berhasil, User: " + user.get().getEmail());
+
+            // Arahkan ke halaman dashboard
+            return "redirect:/dashboard";
+        } else {
+            System.out.println("Password tidak cocok!");
+        }
+    } else {
+        System.out.println("User dengan email " + email + " tidak ditemukan!");
+    }
+
+    // Jika login gagal, beri pesan error dan arahkan kembali ke halaman login
+    redirectAttributes.addFlashAttribute("error", "Email atau Password salah!");
+    return "redirect:/login";
+}
+
     
     // @GetMapping("/status")
     // public ResponseEntity<Map<String, Object>> getStatus(HttpSession session) {

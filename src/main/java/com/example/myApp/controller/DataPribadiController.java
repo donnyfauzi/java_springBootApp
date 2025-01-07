@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.myApp.model.DataPribadi;
+import com.example.myApp.model.User;
 import com.example.myApp.service.DataPribadiService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class DataPribadiController {
@@ -19,7 +22,14 @@ public class DataPribadiController {
     @Autowired
     private DataPribadiService dataPribadiService;
 
-    
+    // Helper method to get user from session
+    private User getUserFromSession(HttpSession session) throws IllegalStateException {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            System.out.println("User tidak ditemukan di session!");
+        }
+        return user;
+    }
 
     @GetMapping("/data-pribadi")
     public String showPengguna(Model model) {
@@ -41,11 +51,13 @@ public class DataPribadiController {
         @RequestParam("gol_darah") String golDarah,
         @RequestParam("kewarganegaraan") String kewarganegaraan,
         RedirectAttributes redirectAttributes,
-        Model model
+        Model model,
+        HttpSession session
         
-    ) {
+    ) 
+    { 
         try {
-            // mengembalikan nilai input
+        // mengembalikan nilai input
         model.addAttribute("nama", nama);
         model.addAttribute("jenisKelamin", jenisKelamin);
         model.addAttribute("tentangAnda", tentangAnda);
@@ -120,6 +132,7 @@ public class DataPribadiController {
             return "data-pribadi";
         }
 
+        User user = getUserFromSession(session);
         // Membuat objek DataPribadi dan mengisinya dengan data dari form
         DataPribadi dataPribadi = new DataPribadi();
         dataPribadi.setNama(nama);
@@ -134,19 +147,23 @@ public class DataPribadiController {
         dataPribadi.setStatusPerkawinan(statusPerkawinan);
         dataPribadi.setGolDarah(golDarah);
         dataPribadi.setKewarganegaraan(kewarganegaraan);
+        dataPribadi.setUser(user);
         
         // Menyimpan data ke database
         dataPribadiService.saveOrUpdate(dataPribadi);
 
         // Redirect dengan pesan sukses
-        redirectAttributes.addFlashAttribute("successMessage", "Data berhasil di-upload!");
+        redirectAttributes.addFlashAttribute("successMessage", "Data berhasil disimpan");
         return "redirect:/data-pribadi"; // Kembali ke halaman yang menampilkan data
 
         } catch(Exception e) {
             // Tangani error upload dan kirim pesan error ke view
-            redirectAttributes.addFlashAttribute("errorMessage", "Terjadi kesalahan saat menyimpan data: " + e.getMessage());
+            redirectAttributes.addFlashAttribute("errorMessage", "Gagal menyimpan data");
             return "redirect:/data-pribadi";
         }
+        
+        
+
            
     }
      

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class DataPribadiService {
-          @Autowired
+     @Autowired
     private DataPribadiRepository dataPribadiRepository;
 
     // Menyimpan atau memperbarui data pribadi

@@ -1,10 +1,14 @@
 package com.example.myApp.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.CascadeType; 
+
 
 // import java.util.List;
 
@@ -18,6 +22,9 @@ public class User {
     private String nama;
     private String email;
     private String password;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
+    private DataPribadi dataPribadi;
 
     // Getters dan Setters
 
@@ -51,5 +58,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public DataPribadi getDataPribadi() {
+        return dataPribadi;
+    }
+
+    public void setDataPribadi(DataPribadi dataPribadi) {
+        this.dataPribadi = dataPribadi;
     }
 }
