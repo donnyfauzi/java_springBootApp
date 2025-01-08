@@ -153,7 +153,7 @@ public class DataPribadiController {
         dataPribadiService.saveOrUpdate(dataPribadi);
 
         // Redirect dengan pesan sukses
-        redirectAttributes.addFlashAttribute("successMessage", "Data berhasil disimpan");
+        redirectAttributes.addFlashAttribute("successMessage", "Data berhasil disimpan, silahkan isi data lainnya !");
         return "redirect:/data-pribadi"; // Kembali ke halaman yang menampilkan data
 
         } catch(Exception e) {
