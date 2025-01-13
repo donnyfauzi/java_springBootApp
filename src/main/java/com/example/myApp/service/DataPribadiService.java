@@ -1,6 +1,7 @@
 package com.example.myApp.service;
 
 import com.example.myApp.model.DataPribadi;
+import com.example.myApp.model.User;
 import com.example.myApp.repository.DataPribadiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,10 @@ public class DataPribadiService {
     // Menghapus data pribadi berdasarkan ID
     public void deleteDataPribadiById(Long id) {
         dataPribadiRepository.deleteById(id);
+    }
+
+    public DataPribadi findByUser(User user) {
+        return dataPribadiRepository.findByUser(user);
     }
           
 }

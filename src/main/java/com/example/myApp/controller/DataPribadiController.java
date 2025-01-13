@@ -32,7 +32,10 @@ public class DataPribadiController {
     }
 
     @GetMapping("/data-pribadi")
-    public String showPengguna(Model model) {
+    public String showPengguna(HttpSession session, Model model) {
+        User user = getUserFromSession(session);
+        boolean isDataPribadiUploaded = dataPribadiService.findByUser(user) != null;
+        model.addAttribute("isDataPribadiUploaded", isDataPribadiUploaded);
         return "data-pribadi";
     }
 
@@ -55,117 +58,125 @@ public class DataPribadiController {
         HttpSession session
         
     ) 
-    { 
+    {
         try {
-        // mengembalikan nilai input
-        model.addAttribute("nama", nama);
-        model.addAttribute("jenisKelamin", jenisKelamin);
-        model.addAttribute("tentangAnda", tentangAnda);
-        model.addAttribute("alamat", alamat);
-        model.addAttribute("tempatLahir", tempatLahir);
-        model.addAttribute("tanggalLahir", tanggalLahir);
-        model.addAttribute("noTlp", noTlp);
-        model.addAttribute("email", email);
-        model.addAttribute("agama", agama);
-        model.addAttribute("statusPerkawinan", statusPerkawinan);
-        model.addAttribute("statusPerkawinan", statusPerkawinan);
-        model.addAttribute("kewarganegaraan", kewarganegaraan);
+            // mengembalikan nilai input
+            model.addAttribute("nama", nama);
+            model.addAttribute("jenisKelamin", jenisKelamin);
+            model.addAttribute("tentangAnda", tentangAnda);
+            model.addAttribute("alamat", alamat);
+            model.addAttribute("tempatLahir", tempatLahir);
+            model.addAttribute("tanggalLahir", tanggalLahir);
+            model.addAttribute("noTlp", noTlp);
+            model.addAttribute("email", email);
+            model.addAttribute("agama", agama);
+            model.addAttribute("statusPerkawinan", statusPerkawinan);
+            model.addAttribute("statusPerkawinan", statusPerkawinan);
+            model.addAttribute("kewarganegaraan", kewarganegaraan);
 
-        // validasi input
-        if (nama == null || nama.trim().isEmpty()) {
-            model.addAttribute("errorNama", "Nama tidak boleh kosong !");
-            return "data-pribadi"; // Kembali ke halaman dengan pesan error
-        }
+            // validasi input
+            if (nama == null || nama.trim().isEmpty()) {
+                model.addAttribute("errorNama", "Nama tidak boleh kosong !");
+                return "data-pribadi"; // Kembali ke halaman dengan pesan error
+            }
 
-        if (jenisKelamin == null || jenisKelamin.trim().isEmpty()) {
-            model.addAttribute("errorJenisKelamin", "Jenis Kelamin harus diisi !");
-            return "data-pribadi";
-        }
+            if (jenisKelamin == null || jenisKelamin.trim().isEmpty()) {
+                model.addAttribute("errorJenisKelamin", "Jenis Kelamin harus diisi !");
+                return "data-pribadi";
+            }
 
-        if (tentangAnda == null || tentangAnda.trim().isEmpty()) {
-            model.addAttribute("errorTentangAnda", "Tentang Anda harus diisi !");
-            return "data-pribadi";
-        }
+            if (tentangAnda == null || tentangAnda.trim().isEmpty()) {
+                model.addAttribute("errorTentangAnda", "Tentang Anda harus diisi !");
+                return "data-pribadi";
+            }
 
-        if (alamat == null || alamat.trim().isEmpty()) {
-            model.addAttribute("errorAlamat", "Alamat harus diisi !");
-            return "data-pribadi";
-        }
+            if (alamat == null || alamat.trim().isEmpty()) {
+                model.addAttribute("errorAlamat", "Alamat harus diisi !");
+                return "data-pribadi";
+            }
 
-        if (tempatLahir == null || tempatLahir.trim().isEmpty()) {
-            model.addAttribute("errorTempatLahir", "Tempat Lahir harus diisi !");
-            return "data-pribadi";
-        }
+            if (tempatLahir == null || tempatLahir.trim().isEmpty()) {
+                model.addAttribute("errorTempatLahir", "Tempat Lahir harus diisi !");
+                return "data-pribadi";
+            }
 
-        if (tanggalLahir == null || tanggalLahir.trim().isEmpty()) {
-            model.addAttribute("errorTanggalLahir", "Tanggal Lahir harus diisi !");
-            return "data-pribadi";
-        }
+            if (tanggalLahir == null || tanggalLahir.trim().isEmpty()) {
+                model.addAttribute("errorTanggalLahir", "Tanggal Lahir harus diisi !");
+                return "data-pribadi";
+            }
 
-        if (noTlp == null || noTlp.trim().isEmpty()) {
-            model.addAttribute("errorNoTlp", "Nomor Tlp harus diisi !");
-            return "data-pribadi";
-        }
+            if (noTlp == null || noTlp.trim().isEmpty()) {
+                model.addAttribute("errorNoTlp", "Nomor Tlp harus diisi !");
+                return "data-pribadi";
+            }
 
-        if (email == null || email.trim().isEmpty()) {
-            model.addAttribute("errorEmail", "Email harus diisi !");
-            return "data-pribadi";
-        }
+            if (email == null || email.trim().isEmpty()) {
+                model.addAttribute("errorEmail", "Email harus diisi !");
+                return "data-pribadi";
+            }
 
-        if (agama == null || agama.trim().isEmpty()) {
-            model.addAttribute("errorAgama", "Agama harus diisi !");
-            return "data-pribadi";
-        }
+            if (agama == null || agama.trim().isEmpty()) {
+                model.addAttribute("errorAgama", "Agama harus diisi !");
+                return "data-pribadi";
+            }
 
-        if (statusPerkawinan == null || statusPerkawinan.trim().isEmpty()) {
-            model.addAttribute("errorStatusPerkawinan", "Status Perkawinan harus diisi !");
-            return "data-pribadi";
-        }
+            if (statusPerkawinan == null || statusPerkawinan.trim().isEmpty()) {
+                model.addAttribute("errorStatusPerkawinan", "Status Perkawinan harus diisi !");
+                return "data-pribadi";
+            }
 
-        if (golDarah == null || golDarah.trim().isEmpty()) {
-            model.addAttribute("errorGolDarah", "Golongan Darah harus diisi !");
-            return "data-pribadi";
-        }
+            if (golDarah == null || golDarah.trim().isEmpty()) {
+                model.addAttribute("errorGolDarah", "Golongan Darah harus diisi !");
+                return "data-pribadi";
+            }
 
-        if (kewarganegaraan == null || kewarganegaraan.trim().isEmpty()) {
-            model.addAttribute("errorKewarganegaraan", "Kewarganegaraan harus diisi !");
-            return "data-pribadi";
-        }
+            if (kewarganegaraan == null || kewarganegaraan.trim().isEmpty()) {
+                model.addAttribute("errorKewarganegaraan", "Kewarganegaraan harus diisi !");
+                return "data-pribadi";
+            }
 
-        User user = getUserFromSession(session);
-        // Membuat objek DataPribadi dan mengisinya dengan data dari form
-        DataPribadi dataPribadi = new DataPribadi();
-        dataPribadi.setNama(nama);
-        dataPribadi.setJenisKelamin(jenisKelamin);
-        dataPribadi.setTentangAnda(tentangAnda);
-        dataPribadi.setAlamat(alamat);
-        dataPribadi.setTempatLahir(tempatLahir);
-        dataPribadi.setTanggalLahir(LocalDate.parse(tanggalLahir));
-        dataPribadi.setNoTlp(noTlp);
-        dataPribadi.setEmail(email);
-        dataPribadi.setAgama(agama);
-        dataPribadi.setStatusPerkawinan(statusPerkawinan);
-        dataPribadi.setGolDarah(golDarah);
-        dataPribadi.setKewarganegaraan(kewarganegaraan);
-        dataPribadi.setUser(user);
-        
-        // Menyimpan data ke database
-        dataPribadiService.saveOrUpdate(dataPribadi);
+            User user = getUserFromSession(session);
+            // Membuat objek DataPribadi dan mengisinya dengan data dari form
+            DataPribadi dataPribadi = new DataPribadi();
+            dataPribadi.setNama(nama);
+            dataPribadi.setJenisKelamin(jenisKelamin);
+            dataPribadi.setTentangAnda(tentangAnda);
+            dataPribadi.setAlamat(alamat);
+            dataPribadi.setTempatLahir(tempatLahir);
+            dataPribadi.setTanggalLahir(LocalDate.parse(tanggalLahir));
+            dataPribadi.setNoTlp(noTlp);
+            dataPribadi.setEmail(email);
+            dataPribadi.setAgama(agama);
+            dataPribadi.setStatusPerkawinan(statusPerkawinan);
+            dataPribadi.setGolDarah(golDarah);
+            dataPribadi.setKewarganegaraan(kewarganegaraan);
+            dataPribadi.setUser(user);
 
-        // Redirect dengan pesan sukses
-        redirectAttributes.addFlashAttribute("successMessage", "Data berhasil disimpan, silahkan isi data lainnya !");
-        return "redirect:/data-pribadi"; // Kembali ke halaman yang menampilkan data
+            // Menyimpan data ke database
+            dataPribadiService.saveOrUpdate(dataPribadi);
 
-        } catch(Exception e) {
+            // Redirect dengan pesan sukses
+            redirectAttributes.addFlashAttribute("successMessage",
+                    "Data berhasil disimpan, silahkan isi data lainnya !");
+            return "redirect:/data-pribadi"; // Kembali ke halaman yang menampilkan data
+
+        } catch (Exception e) {
             // Tangani error upload dan kirim pesan error ke view
             redirectAttributes.addFlashAttribute("errorMessage", "Gagal menyimpan data");
             return "redirect:/data-pribadi";
         }
-        
-        
 
-           
     }
+    
+    @GetMapping("/data-pribadi/status")
+    public String checkDataPribadiStatus(HttpSession session, Model model) {
+        User user = getUserFromSession(session);
+        boolean isDataUploaded = dataPribadiService.findByUser(user) != null;
+
+        model.addAttribute("isDataUploaded", isDataUploaded);
+        return "data-pribadi";
+    }
+
      
 }
 

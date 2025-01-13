@@ -657,58 +657,127 @@
               <ul class="list-group" id="dataList">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   Data Pribadi
-                  <span class="status-icon" id="status-pribadi">
-                    <i class="bi bi-hourglass-split text-secondary"></i>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  Pendidikan
-                  <span class="status-icon" id="status-pendidikan">
-                    <i class="bi bi-hourglass-split text-secondary"></i>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  Pengalaman Kerja
-                  <span class="status-icon" id="status-kerja">
-                    <i class="bi bi-hourglass-split text-secondary"></i>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  Pengalaman Organisasi
-                  <span class="status-icon" id="status-organisasi">
-                    <i class="bi bi-hourglass-split text-secondary"></i>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  Prestasi
-                  <span class="status-icon" id="status-organisasi">
-                    <i class="bi bi-hourglass-split text-secondary"></i>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  CV
-                  <span class="status-icon" id="status-organisasi">
-                    <i class="bi bi-hourglass-split text-secondary"></i>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  Sertifikat
-                  <span class="status-icon" id="status-organisasi">
-                    <i class="bi bi-hourglass-split text-secondary"></i>
-                  </span>
-                </li>
-              </ul>
+                  <div class="d-flex align-items-center gap-3">
+                    <span class="status-icon" id="status-pribadi">
+                      <i class="bi" 
+                        th:classappend="${isDataPribadiUploaded} ? 'bi-check-circle text-primary' : 'bi-hourglass-split text-secondary'">
+                      </i>
+                    </span>
+                    <span class="edit-icon" title="Edit Data">
+                        <i class="bi bi-pencil-square"></i>
+                    </span>
+                  </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Pendidikan
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="status-icon" id="status-pribadi">
+                        <i class="bi" 
+                          th:classappend="${isDataUploaded} ? 'bi-check-circle text-primary' : 'bi-hourglass-split text-secondary'">
+                        </i>
+                      </span>
+                      <span class="edit-icon" title="Edit Data">
+                          <i class="bi bi-pencil-square"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Pengalaman Kerja
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="status-icon" id="status-pribadi">
+                        <i class="bi" 
+                          th:classappend="${isDataUploaded} ? 'bi-check-circle text-primary' : 'bi-hourglass-split text-secondary'">
+                        </i>
+                      </span>
+                      <span class="edit-icon" title="Edit Data">
+                          <i class="bi bi-pencil-square"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Pengalaman Organisasi
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="status-icon" id="status-pribadi">
+                        <i class="bi" 
+                          th:classappend="${isDataUploaded} ? 'bi-check-circle text-primary' : 'bi-hourglass-split text-secondary'">
+                        </i>
+                      </span>
+                      <span class="edit-icon" title="Edit Data">
+                          <i class="bi bi-pencil-square"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Prestasi
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="status-icon" id="status-pribadi">
+                        <i class="bi" 
+                          th:classappend="${isDataUploaded} ? 'bi-check-circle text-primary' : 'bi-hourglass-split text-secondary'">
+                        </i>
+                      </span>
+                      <span class="edit-icon" title="Edit Data">
+                          <i class="bi bi-pencil-square"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    CV
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="status-icon" id="status-pribadi">
+                        <i class="bi" 
+                          th:classappend="${isDataUploaded} ? 'bi-check-circle text-primary' : 'bi-hourglass-split text-secondary'">
+                        </i>
+                      </span>
+                      <span class="edit-icon" title="Edit Data">
+                          <i class="bi bi-pencil-square"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Sertifikat
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="status-icon" id="status-pribadi">
+                        <i class="bi" 
+                          th:classappend="${isDataUploaded} ? 'bi-check-circle text-primary' : 'bi-hourglass-split text-secondary'">
+                        </i>
+                      </span>
+                      <span class="edit-icon" title="Edit Data">
+                          <i class="bi bi-pencil-square"></i>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
             </div>
           </div>
-          
+          <style>
+            .list-group-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              }
+
+              .status-icon, .edit-icon {
+                display: flex;
+                align-items: center;
+              }
+
+              .gap-3 {
+                gap: 1rem; /* Jarak antar elemen ikon */
+              }
+
+              .edit-icon i:hover {
+                transform: scale(1.2); /* Efek hover pada ikon edit */
+                transition: transform 0.3s ease;
+                color: #007bff;
+                cursor: pointer;
+              }
+          </style>
 
         </div>
       </div>
     </section>
 
-    <style>
-  
-</style>
+   
 
   </main><!-- End #main -->
 
