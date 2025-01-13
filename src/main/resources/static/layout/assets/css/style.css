@@ -1252,6 +1252,29 @@ h6 {
   font-size: 0.65em; /* Mengatur ukuran font */
 }
 
+/* kelengkapan data */
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-icon, .edit-icon {
+  display: flex;
+  align-items: center;
+}
+
+.gap-3 {
+  gap: 1rem; /* Jarak antar elemen ikon */
+}
+
+.edit-icon i:hover {
+  transform: scale(1.2); /* Efek hover pada ikon edit */
+  transition: transform 0.3s ease;
+  color: #007bff;
+  cursor: pointer;
+}
+
 
 
 
